@@ -1,8 +1,9 @@
 import { Router } from "express";
-import practiceQuestion from "../models/practiceQuestion.js";
 import {
   getPracticeQuestions,
   addPracticeQuestion,
+  editPracticeQuestion,
+  deletePracticeQuestion,
 } from "../controllers/practiceQuestions.js";
 
 const router = Router();
@@ -17,6 +18,19 @@ router.post("/", async function (req, res) {
   res.send(newPracticeQuestion);
 });
 
-router.put("/:id", async function (req, res) {});
+router.put("/:_id", async function (req, res) {
+  const documentId = req.params._id;
+  const updatedPracticeQuestion = await editPracticeQuestion(
+    documentId,
+    req.body
+  );
+  res.send(updatedPracticeQuestion);
+});
+
+router.delete("/:_id", async function (req, res) {
+  const documentId = req.params._id;
+  const deleteResponse = await deletePracticeQuestion(documentId);
+  res.send(deleteResponse);
+});
 
 export default router;

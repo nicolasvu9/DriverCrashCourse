@@ -20,7 +20,7 @@ const questionSchema = new Schema({
   choices: [choiceSchema],
   image: {
     type: String,
-    required: true,
+    required: false,
   },
   correct_answer_explanation: {
     type: String,
