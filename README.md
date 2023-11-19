@@ -39,13 +39,13 @@ Go to server directory and run
 [
   {
     "_id": "1",
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   },
   // ... more practice questions
 ]
@@ -60,14 +60,15 @@ Go to server directory and run
 
 ```json
   {
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   }
+
 
 ```
 ### Response
@@ -75,13 +76,13 @@ Go to server directory and run
 ```json
   {
     "_id": "1",
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   }
 
 ```
@@ -95,13 +96,13 @@ Go to server directory and run
 
 ```json
   {
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   }
 
 ```
@@ -110,13 +111,13 @@ Go to server directory and run
 ```json
   {
     "_id": "1",
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   }
 
 ```
@@ -138,7 +139,7 @@ Returns deleted question object
 
 ### Request
 
-`GET /api/mockexam/questions/<MOCK EXAM ID>`
+`GET /api/mockexams/questions/<MOCK EXAM ID>`
 
 ### Response
 
@@ -147,13 +148,13 @@ Returns deleted question object
   {
     "_id": "1",
     "mock_exam_id": "<MOCK EXAM ID>",
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   },
   // ... more mock exam questions
 ]
@@ -164,18 +165,18 @@ Returns deleted question object
 
 ### Request
 
-`POST /api/mockexam/questions`
+`POST /api/mockexams/questions`
 
 ```json
   {
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "mock_exam_id": "<MOCK EXAM ID>",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   }
 
 ```
@@ -188,14 +189,14 @@ Returns deleted question object
 
 ```json
   {
-    "question": "Are you having fun?",
+    "text": "Are you having fun?",
     "mock_exam_id": "<MOCK EXAM ID>",
     "choices": [
       {"choice_text": "Yes", "isCorrect": true},
       {"choice_text": "No", "isCorrect": false},
       {"choice_text": "All of the above", "isCorrect": false}
     ],
-    "explanation": "You're having fun"
+    "correct_answer_explanation": "You're having fun"
   }
 ```
 
