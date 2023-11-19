@@ -13,7 +13,7 @@ const choiceSchema = new Schema({
 });
 
 const mockExamQuestionSchema = new Schema({
-  exam_id: {
+  mock_exam_id: {
     type: String,
     required: true,
   },
@@ -24,7 +24,7 @@ const mockExamQuestionSchema = new Schema({
   choices: [choiceSchema],
   image: {
     type: String,
-    required: true,
+    required: false,
   },
   correct_answer_explanation: {
     type: String,

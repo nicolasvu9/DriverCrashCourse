@@ -1,7 +1,7 @@
 import { Router } from "express";
-import practiceQuestionsRoutes from "./practiceQuestionsRoutes.js";
-import mockExamsRoutes from "./mockExamsRoutes.js";
-import suggestedQuestionsRoutes from "./suggestedQuestionsRoutes.js";
+import practiceQuestionsRoutes from "./practiceQuestions.js";
+import mockExamsRoutes from "./mockExams.js";
+import suggestedQuestionsRoutes from "./suggestedQuestions.js";
 
 const router = Router();
 
