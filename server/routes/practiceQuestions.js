@@ -13,7 +13,7 @@ router.get("/", async function (_req, res) {
   res.send(practiceQuestions);
 });
 
-router.post("/add", async function (req, res) {
+router.post("/", async function (req, res) {
   const newPracticeQuestion = await addPracticeQuestion(req.body);
   res.send(newPracticeQuestion);
 });
