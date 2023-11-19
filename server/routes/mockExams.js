@@ -16,8 +16,8 @@ import {
 const router = Router();
 
 router.get("/", async function (_req, res) {
-  const mockExamQuestions = await getMockExams();
-  res.send(mockExamQuestions);
+  const mockExams = await getMockExams();
+  res.send(mockExams);
 });
 
 router.post("/", async function (req, res) {
