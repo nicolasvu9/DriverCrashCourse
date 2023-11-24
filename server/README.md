@@ -1,7 +1,7 @@
 # Express API
 
-
 ## Setting Up
+
 Install Node or nvm if not already installed, I'm using node v20.9.0
 Run `node --version` to verify your version
 
@@ -22,9 +22,6 @@ Decrypt
 Go to server directory and run
 `npm run dev`
 
-
-
-
 # Practice Questions
 
 ## Get all practice questions
@@ -41,50 +38,69 @@ Go to server directory and run
     "_id": "1",
     "text": "Are you having fun?",
     "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
+      { "choice_text": "Yes", "isCorrect": true },
+      { "choice_text": "No", "isCorrect": false },
+      { "choice_text": "All of the above", "isCorrect": false }
     ],
     "correct_answer_explanation": "You're having fun"
-  },
+  }
   // ... more practice questions
 ]
 ```
-
 
 ## Create a new practice question
 
 ### Request
 
 `POST /api/practicequestions`
+The request has to be in multipart form-data because we are uploading a file with multer
+The image upload is optional
 
-```json
-  {
-    "text": "Are you having fun?",
-    "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
-    ],
-    "correct_answer_explanation": "You're having fun"
-  }
+```javascript
+const postData = {
+  question: "Are you having fun?",
+  choices: [
+    { choice_text: "Yes", isCorrect: true },
+    { choice_text: "No", isCorrect: false },
+    { choice_text: "All of the above", isCorrect: false }
+  ],
+  image: /* your image file here */,
+  correct_answer_explanation: "You're having fun"
+};
+
+const formData = new FormData();
+
+formData.append('question', postData.question);
+formData.append('correct_answer_explanation', postData.explanation);
+
+formData.append('image', postData.image);
+
+// Important to stringify choices
+formData.append('choices', JSON.stringify(postData.choices));
+
+fetch('https://example.com/api/endpoint', {
+  method: 'POST',
+  body: formData,
+})
+
 
 
 ```
+
 ### Response
 
 ```json
-  {
-    "_id": "1",
-    "text": "Are you having fun?",
-    "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
-    ],
-    "correct_answer_explanation": "You're having fun"
-  }
-
+{
+  "_id": "1",
+  "text": "Are you having fun?",
+  "choices": [
+    { "choice_text": "Yes", "isCorrect": true },
+    { "choice_text": "No", "isCorrect": false },
+    { "choice_text": "All of the above", "isCorrect": false }
+  ],
+  "image": "link_to_image",
+  "correct_answer_explanation": "You're having fun"
+}
 ```
 
 ## Modify a question with its ID
@@ -92,36 +108,34 @@ Go to server directory and run
 ### Request
 
 `PUT /api/practicequestion/<ID OF QUESTION YOU WANT TO MODIFY>`
-
+Same principle of FormData as the POST request
 
 ```json
-  {
-    "text": "Are you having fun?",
-    "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
-    ],
-    "correct_answer_explanation": "You're having fun"
-  }
-
+{
+  "text": "Are you having fun?",
+  "choices": [
+    { "choice_text": "Yes", "isCorrect": true },
+    { "choice_text": "No", "isCorrect": false },
+    { "choice_text": "All of the above", "isCorrect": false }
+  ],
+  "correct_answer_explanation": "You're having fun"
+}
 ```
+
 ### Response
 
 ```json
-  {
-    "_id": "1",
-    "text": "Are you having fun?",
-    "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
-    ],
-    "correct_answer_explanation": "You're having fun"
-  }
-
+{
+  "_id": "1",
+  "text": "Are you having fun?",
+  "choices": [
+    { "choice_text": "Yes", "isCorrect": true },
+    { "choice_text": "No", "isCorrect": false },
+    { "choice_text": "All of the above", "isCorrect": false }
+  ],
+  "correct_answer_explanation": "You're having fun"
+}
 ```
-
 
 ## Delete practice question by ID
 
@@ -130,8 +144,8 @@ Go to server directory and run
 `DELETE /api/practicequestion/<ID OF QUESTION YOU WANT TO DELETE>`
 
 ### Response
-Returns deleted question object
 
+Returns deleted question object
 
 # Mock Exam Questions
 
@@ -150,35 +164,34 @@ Returns deleted question object
     "mock_exam_id": "<MOCK EXAM ID>",
     "text": "Are you having fun?",
     "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
+      { "choice_text": "Yes", "isCorrect": true },
+      { "choice_text": "No", "isCorrect": false },
+      { "choice_text": "All of the above", "isCorrect": false }
     ],
     "correct_answer_explanation": "You're having fun"
-  },
+  }
   // ... more mock exam questions
 ]
 ```
-
 
 ## Create a new mock exam question
 
 ### Request
 
 `POST /api/mockexams/questions`
+Make with form data same as above
 
 ```json
-  {
-    "text": "Are you having fun?",
-    "mock_exam_id": "<MOCK EXAM ID>",
-    "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
-    ],
-    "correct_answer_explanation": "You're having fun"
-  }
-
+{
+  "text": "Are you having fun?",
+  "mock_exam_id": "<MOCK EXAM ID>",
+  "choices": [
+    { "choice_text": "Yes", "isCorrect": true },
+    { "choice_text": "No", "isCorrect": false },
+    { "choice_text": "All of the above", "isCorrect": false }
+  ],
+  "correct_answer_explanation": "You're having fun"
+}
 ```
 
 ## Modify a mock exam question with its ID
@@ -186,28 +199,26 @@ Returns deleted question object
 ### Request
 
 `PUT /api/mockexams/questions/<ID OF QUESTION YOU WANT TO MODIFY>`
+Make with form data same as above
 
 ```json
-  {
-    "text": "Are you having fun?",
-    "mock_exam_id": "<MOCK EXAM ID>",
-    "choices": [
-      {"choice_text": "Yes", "isCorrect": true},
-      {"choice_text": "No", "isCorrect": false},
-      {"choice_text": "All of the above", "isCorrect": false}
-    ],
-    "correct_answer_explanation": "You're having fun"
-  }
+{
+  "text": "Are you having fun?",
+  "mock_exam_id": "<MOCK EXAM ID>",
+  "choices": [
+    { "choice_text": "Yes", "isCorrect": true },
+    { "choice_text": "No", "isCorrect": false },
+    { "choice_text": "All of the above", "isCorrect": false }
+  ],
+  "correct_answer_explanation": "You're having fun"
+}
 ```
-
-
 
 ## Delete practice question by ID
 
 ### Request
 
 `DELETE /api/mockexams/questions/<ID OF QUESTION YOU WANT TO DELETE>`
-
 
 # Mock Exam
 
@@ -221,15 +232,14 @@ Returns deleted question object
 
 ```json
 [
-    {
-        "_id": "65599b0a8d72abf26df73603",
-        "name": "Sample Mock Exam",
-        "description": "This is a sample description for the mock exam.",
-        "__v": 0
-    }
+  {
+    "_id": "65599b0a8d72abf26df73603",
+    "name": "Sample Mock Exam",
+    "description": "This is a sample description for the mock exam.",
+    "__v": 0
+  }
 ]
 ```
-
 
 ## Create a new mock exam
 
@@ -242,7 +252,6 @@ Returns deleted question object
   "name": "Sample Mock Exam",
   "description": "This is a sample description for the mock exam."
 }
-
 ```
 
 ## Modify a mock exam question with its ID
@@ -263,3 +272,72 @@ Returns deleted question object
 ### Request
 
 `DELETE /api/mockexams/<ID OF EXAM YOU WANT TO DELETE>`
+
+# Suggest questions
+
+## Get all suggested questions
+
+### Request
+
+`GET /api/suggestedquestions`
+
+### Response
+
+Same as practice questions w/o image
+
+## Create a new suggested question
+
+### Request
+
+`POST /api/suggestedquestions`
+Same as practice questions w/o image
+
+## Modify a suggested question with its ID
+
+### Request
+
+`PUT /api/mockexams/<ID OF QUESTION YOU WANT TO MODIFY>`
+
+## Delete suggested question
+
+### Request
+
+`DELETE /api/mockexams/<ID OF EXAM YOU WANT TO DELETE>`
+
+## Approve suggested question
+
+This deletes the suggested question and adds it to the practice questions. Can be a modified version and image can be uploaded.
+
+### Request
+
+`POST /api/suggestedquestions/<ID OF SUGGESTED QUESTION>/approve`
+
+The image upload is optional
+
+```javascript
+const postData = {
+  question: "Are you having fun?",
+  choices: [
+    { choice_text: "Yes", isCorrect: true },
+    { choice_text: "No", isCorrect: false },
+    { choice_text: "All of the above", isCorrect: false }
+  ],
+  image: /* your image file here */,
+  correct_answer_explanation: "You're having fun"
+};
+
+const formData = new FormData();
+
+formData.append('question', postData.question);
+formData.append('correct_answer_explanation', postData.explanation);
+
+formData.append('image', postData.image);
+
+// Important to stringify choices
+formData.append('choices', JSON.stringify(postData.choices));
+
+fetch('https://example.com/api/endpoint', {
+  method: 'POST',
+  body: formData,
+})
+```
