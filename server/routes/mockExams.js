@@ -1,4 +1,6 @@
 import { Router } from "express";
+import uploadImageMiddleware from "../middleware/fileUploadMiddleware.js";
+
 import {
   getMockExams,
   addMockExam,
@@ -43,18 +45,41 @@ router.get("/questions/:examid", async function (req, res) {
   res.send(mockExamQuestions);
 });
 
-router.post("/questions", async function (req, res) {
-  const newPracticeQuestion = await addMockExamQuestion(req.body);
-  res.send(newPracticeQuestion);
+router.post("/questions", uploadImageMiddleware, async function (req, res) {
+  try {
+    const { text, choices, correct_answer_explanation } = req.body;
+    const data = {
+      text,
+      choices: JSON.parse(choices),
+      correct_answer_explanation,
+    };
+    if (req.file) {
+      data.image = req.file.filename;
+    }
+    const newMockExamQuestion = await addMockExamQuestion(data);
+    res.send(newMockExamQuestion);
+  } catch (err) {
+    res.status(400).send({ msg: err.message });
+  }
 });
 
-router.put("/questions/:_id", async function (req, res) {
-  const documentId = req.params._id;
-  const updatedPracticeQuestion = await editMockExamQuestion(
-    documentId,
-    req.body
-  );
-  res.send(updatedPracticeQuestion);
+router.put("/questions/:_id", uploadImageMiddleware, async function (req, res) {
+  try {
+    const id = req.params._id;
+    const { text, choices, correct_answer_explanation } = req.body;
+    const data = {
+      text,
+      choices: JSON.parse(choices),
+      correct_answer_explanation,
+    };
+    if (req.file) {
+      data.image = req.file.filename;
+    }
+    const updatedMockExamQuestion = await editMockExamQuestion(id, data);
+    res.send(updatedMockExamQuestion);
+  } catch (err) {
+    res.status(400).send({ msg: err.message });
+  }
 });
 
 router.delete("/questions/:_id", async function (req, res) {

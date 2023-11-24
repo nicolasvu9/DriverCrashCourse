@@ -1,7 +1,12 @@
 import practiceQuestion from "../models/practiceQuestion.js";
 
 export async function getPracticeQuestions() {
-  return await practiceQuestion.find({});
+  try {
+    return await practiceQuestion.find({});
+  } catch (err) {
+    console.error("error getting practice questions", err);
+    throw err;
+  }
 }
 
 export async function addPracticeQuestion(data) {
@@ -11,6 +16,7 @@ export async function addPracticeQuestion(data) {
     return savedQuestion;
   } catch (err) {
     console.error("error adding new practice question", err);
+    throw err;
   }
 }
 
@@ -24,6 +30,7 @@ export async function editPracticeQuestion(id, data) {
     return updatedPracticeQuestion;
   } catch (err) {
     console.error("error adding new practice question", err);
+    throw err;
   }
 }
 
@@ -34,6 +41,6 @@ export async function deletePracticeQuestion(id) {
     return deletedPracticeQuestion;
   } catch (err) {
     console.error("error adding new practice question", err);
-    return err;
+    throw err;
   }
 }
