@@ -12,6 +12,7 @@ export async function addMockExam(data) {
     return savedMockExam;
   } catch (err) {
     console.error("error adding new mock exam", err);
+    throw err;
   }
 }
 
@@ -25,6 +26,7 @@ export async function editMockExam(id, data) {
     return updatedMockExam;
   } catch (err) {
     console.error("error replacing mock exam", err);
+    throw err;
   }
 }
 
@@ -35,6 +37,6 @@ export async function deleteMockExam(id) {
     return deletedMockExam;
   } catch (err) {
     console.error("error deleting mock exam", err);
-    return err;
+    throw err;
   }
 }
