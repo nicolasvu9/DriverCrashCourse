@@ -7,6 +7,6 @@ const router = Router();
 
 router.use("/practicequestions", practiceQuestionsRoutes);
 router.use("/mockexams", mockExamsRoutes);
-router.use("/suggestquestions", suggestedQuestionsRoutes);
+router.use("/suggestedquestions", suggestedQuestionsRoutes);
 
 export default router;
