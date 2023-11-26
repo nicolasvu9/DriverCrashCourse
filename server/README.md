@@ -9,7 +9,9 @@ Clone Repo
 
 Go to server directory
 `cd server`
-Install node modules with `npm install`
+
+Install node modules with 
+`npm install`
 
 The config file with the mongo db access is encrypted, to decrypt use the below command and enter the course when prompted
 
