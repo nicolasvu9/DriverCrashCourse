@@ -37,6 +37,7 @@ export async function signIn(req) {
       _id: user.id,
       username: user.username,
       access_token: token,
+      role: user.role,
     };
   } catch (err) {
     console.error("Error signing in", err);

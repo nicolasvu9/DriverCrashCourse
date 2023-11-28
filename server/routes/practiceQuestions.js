@@ -1,18 +1,29 @@
 import { Router } from "express";
 import {
-  getPracticeQuestions,
+  getAdminPracticeQuestions,
   addPracticeQuestion,
   editPracticeQuestion,
   deletePracticeQuestion,
+  setUserQuestionProgress,
+  getUserPracticeQuestions,
 } from "../controllers/practiceQuestions.js";
 
 import { verifyToken, isAdmin } from "../middlewares/auth.js";
 
 const router = Router();
 
-router.get("/", [verifyToken, isAdmin], async function (_req, res) {
+router.get("/admin", [verifyToken, isAdmin], async function (req, res) {
   try {
-    const practiceQuestions = await getPracticeQuestions();
+    const practiceQuestions = await getAdminPracticeQuestions();
+    res.send(practiceQuestions);
+  } catch (err) {
+    res.status(400).send({ msg: err.message });
+  }
+});
+
+router.get("/", [verifyToken], async function (req, res) {
+  try {
+    const practiceQuestions = await getUserPracticeQuestions(req);
     res.send(practiceQuestions);
   } catch (err) {
     res.status(400).send({ msg: err.message });
@@ -23,6 +34,15 @@ router.post("/", [verifyToken, isAdmin], async function (req, res) {
   try {
     const newPracticeQuestion = await addPracticeQuestion(req.body);
     res.send(newPracticeQuestion);
+  } catch (err) {
+    res.status(400).send({ msg: err.message });
+  }
+});
+
+router.post("/:_id/completed", [verifyToken], async function (req, res) {
+  try {
+    const newUserProgressQuestion = await setUserQuestionProgress(req);
+    res.send(newUserProgressQuestion);
   } catch (err) {
     res.status(400).send({ msg: err.message });
   }
