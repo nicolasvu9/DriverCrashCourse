@@ -8,14 +8,16 @@ import {
   approveSuggestedQuestion,
 } from "../controllers/suggestedQuestions.js";
 
+import { verifyToken, isAdmin } from "../middlewares/auth.js";
+
 const router = Router();
 
-router.get("/", async function (_req, res) {
+router.get("/", [verifyToken], async function (_req, res) {
   const suggestedQuestions = await getSuggestedQuestions();
   res.send(suggestedQuestions);
 });
 
-router.post("/", async function (req, res) {
+router.post("/", [verifyToken], async function (req, res) {
   try {
     const response = await addSuggestedQuestion(req.body);
     res.send(response);
@@ -24,7 +26,7 @@ router.post("/", async function (req, res) {
   }
 });
 
-router.post("/:_id/approve", async function (req, res) {
+router.post("/:_id/approve", [verifyToken, isAdmin], async function (req, res) {
   try {
     const id = req.params._id;
     const response = await approveSuggestedQuestion(id, req.body);
@@ -34,7 +36,7 @@ router.post("/:_id/approve", async function (req, res) {
   }
 });
 
-router.put("/:_id", async function (req, res) {
+router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const updatedSuggestedQuestion = await editSuggestedQuestion(id, req.body);
     res.send(updatedSuggestedQuestion);
@@ -43,7 +45,7 @@ router.put("/:_id", async function (req, res) {
   }
 });
 
-router.delete("/:_id", async function (req, res) {
+router.delete("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
     const deleteResponse = await deleteSuggestedQuestion(documentId);

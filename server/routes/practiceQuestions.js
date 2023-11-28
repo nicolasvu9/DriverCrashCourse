@@ -6,9 +6,11 @@ import {
   deletePracticeQuestion,
 } from "../controllers/practiceQuestions.js";
 
+import { verifyToken, isAdmin } from "../middlewares/auth.js";
+
 const router = Router();
 
-router.get("/", async function (_req, res) {
+router.get("/", [verifyToken, isAdmin], async function (_req, res) {
   try {
     const practiceQuestions = await getPracticeQuestions();
     res.send(practiceQuestions);
@@ -17,7 +19,7 @@ router.get("/", async function (_req, res) {
   }
 });
 
-router.post("/", async function (req, res) {
+router.post("/", [verifyToken, isAdmin], async function (req, res) {
   try {
     const newPracticeQuestion = await addPracticeQuestion(req.body);
     res.send(newPracticeQuestion);
@@ -26,7 +28,7 @@ router.post("/", async function (req, res) {
   }
 });
 
-router.put("/:_id", async function (req, res) {
+router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
     const updatedPracticeQuestion = await editPracticeQuestion(
@@ -39,7 +41,7 @@ router.put("/:_id", async function (req, res) {
   }
 });
 
-router.delete("/:_id", async function (req, res) {
+router.delete("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
     const deleteResponse = await deletePracticeQuestion(documentId);
