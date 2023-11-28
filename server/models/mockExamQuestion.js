@@ -22,10 +22,6 @@ const mockExamQuestionSchema = new Schema({
     required: true,
   },
   choices: [choiceSchema],
-  image: {
-    type: String,
-    required: false,
-  },
   correct_answer_explanation: {
     type: String,
     required: true,
