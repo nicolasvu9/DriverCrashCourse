@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import AdministrativePage from './components/administrativePage';
+import AdministrativePage from './components/AdministrativePage';
 
 function App() {
     
   return (
     <div>
-      <h1>Driver Crash Course</h1>
-      <AdministrativePage /> {/* Render the AdministrativePage component */}
+      <AdministrativePage /> {/* Replace with the Page component you want to render */}
     </div>
   );
 }

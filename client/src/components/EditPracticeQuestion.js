@@ -3,12 +3,6 @@ import './EditPracticeQuestion.css';
 
 const EditPracticeQuestion = ({ onClose }) => {
     const [questions, setQuestions] = useState([]);
-    const mockQuestion1 = {id: '1', text: "Are u having funAre u having fun Are u having fun Are u having fun Are u having fun Are u having fun"};
-    const mockQuestion2 = {id: '2', text: "Are u not having fun"};
-    const mockQuestion3 = {id: '3', text: "Who is having fun"};
-    questions.push(mockQuestion1)
-    questions.push(mockQuestion2)
-    questions.push(mockQuestion3)
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
@@ -23,7 +17,7 @@ const EditPracticeQuestion = ({ onClose }) => {
             }
         };
 
-        //fetchQuestions();
+        fetchQuestions();
     }, []);
 
     const editQuestion = (questionId) => {
