@@ -21,7 +21,7 @@ Encrypt
 Decrypt
 `gpg ./config/default.json.gpg`
 
-Go to server directory and run
+Run server
 `npm run dev`
 
 # Authentication
