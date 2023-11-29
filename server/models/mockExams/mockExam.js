@@ -12,4 +12,4 @@ const mockExamSchema = new Schema({
   },
 });
 
-export default mongoose.model("MockExam", mockExamSchema);
+export default mongoose.model("mockexam", mockExamSchema);

@@ -6,7 +6,7 @@ import {
   editSuggestedQuestion,
   deleteSuggestedQuestion,
   approveSuggestedQuestion,
-} from "../controllers/suggestedQuestions.js";
+} from "../controllers/practiceQuestions/suggestedQuestions.js";
 
 import { verifyToken, isAdmin } from "../middlewares/auth.js";
 

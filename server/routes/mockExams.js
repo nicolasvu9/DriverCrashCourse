@@ -4,19 +4,21 @@ import {
   addMockExam,
   deleteMockExam,
   editMockExam,
-} from "../controllers/mockExams.js";
+  submitMockExamResult,
+} from "../controllers/mockExams/mockExams.js";
 
 import {
   getMockExamQuestions,
   addMockExamQuestion,
   editMockExamQuestion,
   deleteMockExamQuestion,
-} from "../controllers/mockExamQuestions.js";
+} from "../controllers/mockExams/mockExamQuestions.js";
 
 import { verifyToken, isAdmin } from "../middlewares/auth.js";
 
 const router = Router();
 
+// Get all mock exams
 router.get("/", [verifyToken], async function (_req, res) {
   try {
     const mockExams = await getMockExams();
@@ -26,6 +28,7 @@ router.get("/", [verifyToken], async function (_req, res) {
   }
 });
 
+// Add a mock exam
 router.post("/", [verifyToken, isAdmin], async function (req, res) {
   try {
     const newPracticeQuestion = await addMockExam(req.body);
@@ -35,6 +38,7 @@ router.post("/", [verifyToken, isAdmin], async function (req, res) {
   }
 });
 
+// Modify a mock exam
 router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
@@ -45,6 +49,7 @@ router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   }
 });
 
+// Delete a mock exam
 router.delete("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const mockExamId = req.params._id;
@@ -54,6 +59,8 @@ router.delete("/:_id", [verifyToken, isAdmin], async function (req, res) {
     res.status(400).send({ msg: err.message });
   }
 });
+
+// Get mock exam questions with its id
 
 router.get("/questions/:examid", [verifyToken], async function (req, res) {
   try {
@@ -65,6 +72,8 @@ router.get("/questions/:examid", [verifyToken], async function (req, res) {
   }
 });
 
+// Add mock exam question
+
 router.post("/questions", [verifyToken, isAdmin], async function (req, res) {
   try {
     const newPracticeQuestion = await addMockExamQuestion(req.body);
@@ -73,6 +82,8 @@ router.post("/questions", [verifyToken, isAdmin], async function (req, res) {
     res.status(400).send({ msg: err.message });
   }
 });
+
+// Modify mock exam question
 
 router.put(
   "/questions/:_id",
@@ -91,6 +102,7 @@ router.put(
   }
 );
 
+// Delete mock exam question
 router.delete(
   "/questions/:_id",
   [verifyToken, isAdmin],
@@ -105,4 +117,20 @@ router.delete(
   }
 );
 
+// Submit exam results
+router.post("/results/:examid", [verifyToken], async function (req, res) {
+  try {
+    const mock_exam_id = req.params.examid;
+    const user_id = req.userId;
+    const result = req.body.result;
+    const mockExamQuestions = await submitMockExamResult(
+      mock_exam_id,
+      result,
+      user_id
+    );
+    res.send(mockExamQuestions);
+  } catch (err) {
+    res.status(400).send({ msg: err.message });
+  }
+});
 export default router;
