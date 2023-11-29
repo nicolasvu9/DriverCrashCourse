@@ -1,4 +1,6 @@
 import mockExam from "../../models/mockExams/mockExam.js";
+import mockExamResults from "../../models/mockExams/mockExamResults.js";
+
 import mockExamQuestion from "../../models/mockExams/mockExamQuestion.js";
 
 export async function getMockExams() {
@@ -35,6 +37,23 @@ export async function deleteMockExam(id) {
     const deletedMockExam = await mockExam.findByIdAndDelete(id);
     await mockExamQuestion.deleteMany({ mock_exam_id: id });
     return deletedMockExam;
+  } catch (err) {
+    console.error("error deleting mock exam", err);
+    throw err;
+  }
+}
+
+export async function submitMockExamResult(examId, result, userId) {
+  try {
+    const updated = await mockExamResults.findOneAndUpdate(
+      {
+        mock_exam_id: examId,
+        user_id: userId,
+      },
+      { $max: { top_result: result } },
+      { upsert: true, new: true }
+    );
+    return updated;
   } catch (err) {
     console.error("error deleting mock exam", err);
     throw err;

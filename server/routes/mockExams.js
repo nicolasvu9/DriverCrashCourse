@@ -4,6 +4,7 @@ import {
   addMockExam,
   deleteMockExam,
   editMockExam,
+  submitMockExamResult,
 } from "../controllers/mockExams/mockExams.js";
 
 import {
@@ -119,8 +120,14 @@ router.delete(
 // Submit exam results
 router.post("/results/:examid", [verifyToken], async function (req, res) {
   try {
-    const exam_id = req.params.examid;
-    const mockExamQuestions = await getMockExamQuestions(exam_id);
+    const mock_exam_id = req.params.examid;
+    const user_id = req.userId;
+    const result = req.body.result;
+    const mockExamQuestions = await submitMockExamResult(
+      mock_exam_id,
+      result,
+      user_id
+    );
     res.send(mockExamQuestions);
   } catch (err) {
     res.status(400).send({ msg: err.message });

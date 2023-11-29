@@ -7,7 +7,7 @@ const mockExamResultsSchema = new Schema({
     ref: "mockexam",
     required: true,
   },
-  topScore: {
+  topResult: {
     type: Number,
     required: true,
   },

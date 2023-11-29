@@ -14,7 +14,8 @@ const choiceSchema = new Schema({
 
 const mockExamQuestionSchema = new Schema({
   mock_exam_id: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "mockexam",
     required: true,
   },
   text: {
@@ -28,4 +29,4 @@ const mockExamQuestionSchema = new Schema({
   },
 });
 
-export default mongoose.model("MockExamQuestion", mockExamQuestionSchema);
+export default mongoose.model("mockexamquestion", mockExamQuestionSchema);
