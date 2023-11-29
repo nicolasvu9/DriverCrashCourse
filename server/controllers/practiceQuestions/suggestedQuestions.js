@@ -1,5 +1,5 @@
-import suggestedQuestion from "../models/suggestedQuestion.js";
-import { addPracticeQuestion } from "../controllers/practiceQuestions.js";
+import suggestedQuestion from "../../models/practiceQuestions/suggestedQuestion.js";
+import { addPracticeQuestion } from "../practiceQuestions/practiceQuestions.js";
 
 export async function getSuggestedQuestions() {
   try {

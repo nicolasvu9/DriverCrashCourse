@@ -1,5 +1,5 @@
-import mockExam from "../models/mockExam.js";
-import mockExamQuestion from "../models/mockExamQuestion.js";
+import mockExam from "../../models/mockExams/mockExam.js";
+import mockExamQuestion from "../../models/mockExams/mockExamQuestion.js";
 
 export async function getMockExams() {
   return await mockExam.find({});

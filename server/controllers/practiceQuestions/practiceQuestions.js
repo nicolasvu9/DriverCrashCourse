@@ -1,5 +1,5 @@
-import practiceQuestion from "../models/practiceQuestion.js";
-import questionProgression from "../models/questionProgression.js";
+import practiceQuestion from "../../models/practiceQuestions/practiceQuestion.js";
+import questionProgression from "../../models/practiceQuestions/questionProgression.js";
 
 export async function getAdminPracticeQuestions() {
   try {

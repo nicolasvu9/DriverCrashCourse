@@ -6,7 +6,7 @@ import {
   deletePracticeQuestion,
   setUserQuestionProgress,
   getUserPracticeQuestions,
-} from "../controllers/practiceQuestions.js";
+} from "../controllers/practiceQuestions/practiceQuestions.js";
 
 import { verifyToken, isAdmin } from "../middlewares/auth.js";
 

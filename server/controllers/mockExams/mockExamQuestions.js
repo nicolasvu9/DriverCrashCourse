@@ -1,4 +1,4 @@
-import mockExamQuestion from "../models/mockExamQuestion.js";
+import mockExamQuestion from "../../models/mockExams/mockExamQuestion.js";
 
 export async function getMockExamQuestions(examId) {
   return await mockExamQuestion.find({ mock_exam_id: examId });
