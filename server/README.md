@@ -13,7 +13,7 @@ Go to server directory
 Install node modules with 
 `npm install`
 
-The config file with the mongo db access is encrypted, to decrypt use the below command and enter the course when prompted
+The config file with the mongo db access is encrypted, to decrypt use the below command and enter the course in lowercase with the numbers when prompted
 
 Encrypt
 `gpg -c ./config/default.json`
