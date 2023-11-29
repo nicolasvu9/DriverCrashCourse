@@ -38,6 +38,7 @@ router.post("/:_id/approve", [verifyToken, isAdmin], async function (req, res) {
 
 router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
+    const id = req.params._id;
     const updatedSuggestedQuestion = await editSuggestedQuestion(id, req.body);
     res.send(updatedSuggestedQuestion);
   } catch (err) {
