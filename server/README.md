@@ -219,7 +219,7 @@ This is to be done after a question is completed, to store the progress in pract
 
 ### Request
 
-`DELETE /api/practicequestion/<ID OF QUESTION YOU WANT TO DELETE>`
+`DELETE /api/practicequestions/<ID OF QUESTION YOU WANT TO DELETE>`
 
 ### Response
 
