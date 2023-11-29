@@ -362,7 +362,7 @@ Returns deleted question object
 ```
 
 ### Response
-```
+```json
 {
     "_id": "65668b3de78a99fa4bacc5e6",
     "mock_exam_id": "65668a606140fa0fa188ab2b",
@@ -391,7 +391,7 @@ Same as practice questions
 `POST /api/suggestedquestions`
 json object as payload
 
-```
+```json
 {
   "text": "Are you having fun?",
   "choices": [
@@ -423,7 +423,7 @@ This deletes the suggested question and adds it to the practice questions. Can b
 
 `POST /api/suggestedquestions/<ID OF SUGGESTED QUESTION>/approve`
 
-```
+```json
 {
   "text": "Are you having fun?",
   "choices": [
