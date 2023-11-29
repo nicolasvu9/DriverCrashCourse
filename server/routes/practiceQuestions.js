@@ -1,23 +1,36 @@
 import { Router } from "express";
 import {
-  getPracticeQuestions,
+  getAdminPracticeQuestions,
   addPracticeQuestion,
   editPracticeQuestion,
   deletePracticeQuestion,
-} from "../controllers/practiceQuestions.js";
+  setUserQuestionProgress,
+  getUserPracticeQuestions,
+} from "../controllers/practiceQuestions/practiceQuestions.js";
+
+import { verifyToken, isAdmin } from "../middlewares/auth.js";
 
 const router = Router();
 
-router.get("/", async function (_req, res) {
+router.get("/admin", [verifyToken, isAdmin], async function (req, res) {
   try {
-    const practiceQuestions = await getPracticeQuestions();
+    const practiceQuestions = await getAdminPracticeQuestions();
     res.send(practiceQuestions);
   } catch (err) {
     res.status(400).send({ msg: err.message });
   }
 });
 
-router.post("/", async function (req, res) {
+router.get("/", [verifyToken], async function (req, res) {
+  try {
+    const practiceQuestions = await getUserPracticeQuestions(req);
+    res.send(practiceQuestions);
+  } catch (err) {
+    res.status(400).send({ msg: err.message });
+  }
+});
+
+router.post("/", [verifyToken, isAdmin], async function (req, res) {
   try {
     const newPracticeQuestion = await addPracticeQuestion(req.body);
     res.send(newPracticeQuestion);
@@ -26,7 +39,16 @@ router.post("/", async function (req, res) {
   }
 });
 
-router.put("/:_id", async function (req, res) {
+router.post("/:_id/completed", [verifyToken], async function (req, res) {
+  try {
+    const newUserProgressQuestion = await setUserQuestionProgress(req);
+    res.send(newUserProgressQuestion);
+  } catch (err) {
+    res.status(400).send({ msg: err.message });
+  }
+});
+
+router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
     const updatedPracticeQuestion = await editPracticeQuestion(
@@ -39,7 +61,7 @@ router.put("/:_id", async function (req, res) {
   }
 });
 
-router.delete("/:_id", async function (req, res) {
+router.delete("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
     const deleteResponse = await deletePracticeQuestion(documentId);
