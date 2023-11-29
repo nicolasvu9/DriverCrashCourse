@@ -186,7 +186,7 @@ This is to be done after a question is completed, to store the progress in pract
 
 ### Request
 
-`PUT /api/practicequestion/<ID OF QUESTION YOU WANT TO MODIFY>`
+`PUT /api/practicequestions/<ID OF QUESTION YOU WANT TO MODIFY>`
 
 ```json
 {
