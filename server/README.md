@@ -164,6 +164,24 @@ Successfully signed up
 }
 ```
 
+## Set Question as Completed for User
+This is to be done after a question is completed, to store the progress in practice questions
+
+### Request
+
+`POST /api/practicequestions/<ID OF QUESTION COMPLETED>/completed`
+
+### Response
+
+```json
+{
+    "question_id": "65669dfb3441e42e4ffef3e0",
+    "user_id": "6565840af2af5e6e372d59e8",
+    "_id": "6566a5660b6ea1ec537d7a57",
+    "__v": 0
+}
+```
+
 ## Modify a question with its ID
 
 ### Request
