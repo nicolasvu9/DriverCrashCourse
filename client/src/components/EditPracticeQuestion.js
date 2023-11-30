@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CreatePracticeQuestion from './CreatePracticeQuestion';
 import './EditPracticeQuestion.css';
+import Cookies from 'js-cookie';
 
 const EditPracticeQuestion = ({ onClose }) => {
     const [questions, setQuestions] = useState([]);
@@ -8,7 +9,11 @@ const EditPracticeQuestion = ({ onClose }) => {
 
     const fetchQuestions = async () => {
         try {
-            const response = await fetch('/api/practicequestions/admin');
+            const response = await fetch('/api/practicequestions/admin', {
+                headers: {
+                    'x-access-token': Cookies.get('access_token')
+                }
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -38,7 +43,11 @@ const EditPracticeQuestion = ({ onClose }) => {
     const deleteQuestion = async (questionId) => {
         try {
             const response = await fetch(`/api/practicequestions/${questionId}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'x-access-token': Cookies.get('access_token')
+                }
+
             });
 
             if (!response.ok) {
