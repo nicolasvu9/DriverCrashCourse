@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import './CreatePracticeQuestion.css';
 
-const CreatePracticeQuestion = ({ onClose }) => {
-    const [question, setQuestion] = useState('');
-    const [choices, setChoices] = useState([
+const CreatePracticeQuestion = ({ onClose, question }) => {
+    const [questionText, setQuestionText] = useState(question ? question.text : '');
+    const [choices, setChoices] = useState(question ? question.choices : [
         { choice_text: '', isCorrect: false },
         { choice_text: '', isCorrect: false },
         { choice_text: '', isCorrect: false },
         { choice_text: '', isCorrect: false }
     ]);
-    const [explanation, setExplanation] = useState('');
+    const [explanation, setExplanation] = useState(question ? question.correct_answer_explanation : '');
 
     const handleChoiceChange = (index, event) => {
         if (event.target.name === 'isCorrect') {
@@ -27,14 +27,20 @@ const CreatePracticeQuestion = ({ onClose }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const payload = {
-            text: question,
+            text: questionText,
             choices,
             correct_answer_explanation: explanation
         };
 
         try {
-            const response = await fetch('/api/practicequestions', {
-                method: 'POST',
+            const url = question
+                ? `/api/practicequestions/${question._id}` // If editing, use the PUT endpoint
+                : '/api/practicequestions'; // If creating new, use the POST endpoint
+
+            const method = question ? 'PUT' : 'POST';
+
+            const response = await fetch(url, {
+                method: method,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -54,7 +60,7 @@ const CreatePracticeQuestion = ({ onClose }) => {
         <div className="create-question-form">
             <form onSubmit={handleSubmit}>
                 <label>Question</label>
-                <textarea value={question} onChange={(e) => setQuestion(e.target.value)} />
+                <textarea value={questionText} onChange={(e) => setQuestionText(e.target.value)} />
 
                 {choices.map((choice, index) => (
                     <div key={index} className="choice-item">
