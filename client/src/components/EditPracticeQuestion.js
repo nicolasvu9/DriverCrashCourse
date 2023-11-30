@@ -6,20 +6,20 @@ const EditPracticeQuestion = ({ onClose }) => {
     const [questions, setQuestions] = useState([]);
     const [editingQuestion, setEditingQuestion] = useState(null);
 
-    useEffect(() => {
-        const fetchQuestions = async () => {
-            try {
-                const response = await fetch('/api/practicequestions');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setQuestions(data);
-            } catch (error) {
-                console.error('Error fetching questions', error);
+    const fetchQuestions = async () => {
+        try {
+            const response = await fetch('/api/practicequestions/admin');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        };
+            const data = await response.json();
+            setQuestions(data);
+        } catch (error) {
+            console.error('Error fetching questions', error);
+        }
+    };
 
+    useEffect(() => {
         fetchQuestions();
     }, []);
 
@@ -52,12 +52,13 @@ const EditPracticeQuestion = ({ onClose }) => {
     };
 
     const closeEditModal = () => {
-        setEditingQuestion(null); // Close the edit modal
+        setEditingQuestion(null);
+        fetchQuestions();
     };
 
     return (
-        <div className="modal">
-            <div className="modal-content">
+        <div className="edit-practice-questions-modal">
+            <div className="edit-practice-questions-modal-content">
                 <button className="close-button" onClick={onClose}>&times;</button>
                 <div className="question-list">
                     {questions.map((question, index) => (
