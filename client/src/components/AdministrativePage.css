@@ -1,13 +1,13 @@
 .admin-page {
     display: block;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     height: 100vh;
     margin: 0;
     padding: 0;
 }
 
-h1.page-title{
+h1.page-title {
     display: block;
     margin: 100px;
 }
@@ -18,7 +18,7 @@ h1.page-title{
 }
 
 .admin-button {
-    flex: 1; /* Distributes space evenly */
+    flex: 1;
     min-height: 300px;
     padding: 20px;
     margin: 10px;
@@ -33,12 +33,12 @@ h1.page-title{
     cursor: pointer;
 }
 
-.admin-button:hover, .admin-button:focus {
+.admin-button:hover,
+.admin-button:focus {
     transform: translateY(-15px);
     box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Adjust the size and margins for mobile devices */
 @media (max-width: 768px) {
     .button-container {
         flex-direction: column;
