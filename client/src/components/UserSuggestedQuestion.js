@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './UserSuggestedQuestion.css';
+import Cookies from 'js-cookie'
 
 const UserSuggestedQuestion = ({ onClose }) => {
     const [questions, setQuestions] = useState([]);
@@ -8,7 +9,11 @@ const UserSuggestedQuestion = ({ onClose }) => {
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await fetch('/api/suggestedquestions');
+                const response = await fetch('/api/suggestedquestions', {
+                    headers: {
+                        'x-access-token': Cookies.get('access_token')
+                    }
+                });
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

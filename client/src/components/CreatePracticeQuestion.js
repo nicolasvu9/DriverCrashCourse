@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './CreatePracticeQuestion.css';
+import Cookies from 'js-cookie';
 
 const CreatePracticeQuestion = ({ onClose, question }) => {
     const [questionText, setQuestionText] = useState(question ? question.text : '');
@@ -42,7 +43,8 @@ const CreatePracticeQuestion = ({ onClose, question }) => {
             const response = await fetch(url, {
                 method: method,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': Cookies.get('access_token')
                 },
                 body: JSON.stringify(payload)
             });
