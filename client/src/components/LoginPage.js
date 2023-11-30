@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './loginPage.css';
-import logo from './logo.png';
-const USERS = ['gwen']; // Simulated database for username uniqueness check
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+import './LoginPage.css'; // Assuming this file exists and contains your CSS
+import logo from './logo.png'; // Update the path if necessary
 
 const Header = () => (
   <header>
@@ -13,14 +14,14 @@ const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleLoginSubmit = (event) => {
     event.preventDefault();
     onLogin(username, password);
   };
 
   return (
     <div className="login-form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLoginSubmit}>
         <h2>Login</h2>
         <div className="input-group">
           <label htmlFor="login-username">Username: </label>
@@ -48,13 +49,36 @@ const LoginForm = ({ onLogin }) => {
   );
 };
 
-const SignupForm = ({ onSignup }) => {
+const SignupForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSignup = async (username, password) => {
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        if (data.msg && data.msg.includes('E11000')) {
+          throw new Error('Username already exists. Please try a different one.');
+        }
+        throw new Error('Signup failed. Please try again.');
+      }
+      await onLogin(username, password);
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSignup(username, password);
+    handleSignup(username, password);
   };
 
   return (
@@ -94,32 +118,48 @@ const Footer = () => (
 );
 
 const LoginPage = () => {
-  const handleLogin = (username, password) => {
-    console.log('Login attempt:', username, password);
-  };
+  const navigate = useNavigate(); // Create an instance of useNavigate
+  const handleLogin = async (username, password) => {
+    try {
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-  const handleSignup = (username, password) => {
-    if (USERS.includes(username)) {
-      alert('Username already exists.');
-      return;
+      if (!response.ok) {
+        throw new Error('Login failed. Please check your credentials.');
+      }
+
+      const data = await response.json();
+      Cookies.set('access_token', data.access_token);
+      Cookies.set('user_role', data.role);
+
+      // Check if the role is 'admin' and redirect
+      if (data.role === 'admin') {
+        navigate('/admin'); // Replace '/admin' with your admin page's route
+      } else {
+        // Handle non-admin login if necessary
+        navigate('/dashboard'); // Redirect to a different page for non-admin users
+      }
+    } catch (error) {
+      window.alert(error.message);
     }
-    USERS.push(username);
-    console.log('Signup successful:', username, password);
   };
 
   return (
     <div>
-    <body>
       <Header />
       <div className="forms-container">
         <LoginForm onLogin={handleLogin} />
         <div className="vertical-line"></div>
-        <SignupForm onSignup={handleSignup} />
+        <SignupForm onLogin={handleLogin} />
       </div>
       <Footer />
-      </body>
     </div>
   );
-};
+}
 
 export default LoginPage;
