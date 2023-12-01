@@ -113,7 +113,7 @@ const SignupForm = ({ onLogin }) => {
 
 const Footer = () => (
   <footer>
-    <p>&copy; {new Date().getFullYear()} Your Website Name</p>
+    <p>&copy; {new Date().getFullYear()} Driver Crash Course</p>
   </footer>
 );
 
