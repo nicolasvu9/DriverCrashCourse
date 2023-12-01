@@ -6,24 +6,24 @@ html, body {
   body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Viewport Height */
-    background-color: #f0f0f0; /* Set a background color that matches your design */
+    min-height: 100vh;
+    background-color: #f0f0f0;
   }
   
   header {
     text-align: left;
-    padding: 0 20px; /* Add padding to the sides */
+    padding: 0 20px;
     background-color: #3F6A6F;
     height: 50px;
     display: flex;
-    align-items: center; /* Align the content of the header vertically */
+    align-items: center;
     color: white;
   } 
   
   footer {
     text-align: center;
     height: 40px;
-    line-height: 40px; /* Center the text vertically by setting line-height equal to height */
+    line-height: 40px;
     font-size: 0.8rem;
     background-color: #3F6A6F;
     color: white;
@@ -34,36 +34,36 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 0; /* Adjusted padding to reduce height */
+    padding: 50px 0;
   }
   
   .login-form, .signup-form {
-    flex: 1; /* Changed from 1 to none to avoid forms stretching */
-    margin: 0 50px; /* Spacing between forms */
+    flex: 1; 
+    margin: 0 50px;
     background-color: #e3eee4;
     border-radius: 5px;
     padding: 8%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow to your form boxes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
   
   .vertical-line {
     border-left: 1px solid #ddd;
-    height: 600px; /* Adjust height as needed */
-    margin: 0 20px; /* Added margin to the sides */
+    height: 600px; 
+    margin: 0 20px; 
   }
   
   form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the form elements */
+    align-items: center;
     justify-content: center;
   }
   
   .input-group {
     display: flex;
-    flex-direction: row; /* Stack label and input vertically */
-    align-items: center; /* Aligns items to the left */
-    width: 100%; /* Full width */
+    flex-direction: row; 
+    align-items: center;
+    width: 100%;
     margin-bottom: 25px;
   }
   
@@ -73,8 +73,8 @@ html, body {
   }
   
   input[type="text"], input[type="password"] {
-    width: 100%; /* Full width */
-    max-width: 500px; /* Max width */
+    width: 100%; 
+    max-width: 500px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -87,7 +87,7 @@ html, body {
     border-radius: 4px;
     background-color: #6EB0A8;
     color: white;
-    cursor: pointer; /* Add this line for the hand cursor on hover */
+    cursor: pointer; 
   }
   
   @media (max-width: 600px) {
@@ -97,7 +97,7 @@ html, body {
   
     .login-form, .signup-form {
       padding: 20px;
-      margin: 15px; /* Remove margin between forms */
+      margin: 15px;
     }
   
     .vertical-line {
@@ -120,7 +120,7 @@ html, body {
   
     .login-form, .signup-form {
       padding: 10px;
-      margin: 15px; /* Remove margin between forms */
+      margin: 15px; 
     }
   
     .vertical-line {
@@ -128,10 +128,10 @@ html, body {
     }
   
     header, footer {
-      padding: 0 10px; /* Less padding on smaller screens */
+      padding: 0 10px;
     }
   
     form {
-      padding: 0 10px; /* Less padding inside the form on smaller screens */
+      padding: 0 10px;
     }
   }

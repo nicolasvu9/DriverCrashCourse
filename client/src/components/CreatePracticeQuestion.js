@@ -50,7 +50,7 @@ const CreatePracticeQuestion = ({ onClose, question }) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            onClose(); // Close the modal after submission
+            onClose();
         } catch (error) {
             console.error('Error submitting question', error);
         }

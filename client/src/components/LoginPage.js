@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import './LoginPage.css'; // Assuming this file exists and contains your CSS
-import logo from './logo.png'; // Update the path if necessary
+import './LoginPage.css'; 
+import logo from './logo.png';
 
 const Header = () => (
   <header>
@@ -139,10 +139,10 @@ const LoginPage = () => {
 
       // Check if the role is 'admin' and redirect
       if (data.role === 'admin') {
-        navigate('/admin'); // Replace '/admin' with your admin page's route
+        navigate('/admin');
       } else {
         // Handle non-admin login if necessary
-        navigate('/dashboard'); // Redirect to a different page for non-admin users
+        navigate('/dashboard');
       }
     } catch (error) {
       window.alert(error.message);
