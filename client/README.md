@@ -48,3 +48,18 @@
   // returns "admin" or "user" depending on the role
   let role = Cookies.get('user_role') 
   ```
+
+## React Routes for redirecting pages
+- React Router uses a declarative approach to routing. You configure routes using components, specifying a path and the component that should be rendered when that path is accessed.
+- `<Routes>` and `<Route>`: Use the `<Routes>` component to define the routing region, and `<Route>` components to define individual routes. Each `<Route>` specifies a path and the component that should be displayed when the user navigates to that path.
+- Navigation: Navigation is done either by using `<Link>` to navigate between pages or programmatically using `navigate`.
+- Usage Example:
+  ```
+  // App.js
+  <Routes>
+    <Route path="/" element={<LoginPage />} />
+    <Route path="/admin" element={<ProtectedRoute element={<AdministrativePage />} />} />
+  </Routes>
+  ```
+  When the user navigates to "/", the LoginPage component is rendered.
+  Protected Admin Page Route: The route "/admin" is wrapped in a ProtectedRoute component. This component checks whether the user is authenticated and has the correct role (admin). If not, it redirects the user.
