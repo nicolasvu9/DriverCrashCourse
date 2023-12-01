@@ -54,12 +54,33 @@
 - `<Routes>` and `<Route>`: Use the `<Routes>` component to define the routing region, and `<Route>` components to define individual routes. Each `<Route>` specifies a path and the component that should be displayed when the user navigates to that path.
 - Navigation: Navigation is done either by using `<Link>` to navigate between pages or programmatically using `navigate`.
 - Usage Example:
-  ```
-  // App.js
-  <Routes>
-    <Route path="/" element={<LoginPage />} />
-    <Route path="/admin" element={<ProtectedRoute element={<AdministrativePage />} />} />
-  </Routes>
-  ```
-  When the user navigates to "/", the LoginPage component is rendered.
-  Protected Admin Page Route: The route "/admin" is wrapped in a ProtectedRoute component. This component checks whether the user is authenticated and has the correct role (admin). If not, it redirects the user.
+  - In App.js:
+    ```
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/admin" element={<ProtectedRoute element={<AdministrativePage />} />} />
+    </Routes>
+    ```
+  
+    When the user navigates to "/", the LoginPage component is rendered.
+    Protected Admin Page Route: The route "/admin" is wrapped in a ProtectedRoute component. This component checks whether the user is authenticated and has the correct role (admin). If not, it redirects the user.
+  - In the page component:
+    ```
+    import React from 'react';
+    import { useNavigate } from 'react-router-dom';
+    
+    function HomeButton() {
+      let navigate = useNavigate();
+    
+      function handleClick() {
+        navigate('/home'); // Navigates to the /home route
+      }
+    
+      return (
+        <button type="button" onClick={handleClick}>
+          Go home
+        </button>
+      );
+    }
+    ```
+    In this example, useNavigate is used to navigate to the '/home' route when the button is clicked.
