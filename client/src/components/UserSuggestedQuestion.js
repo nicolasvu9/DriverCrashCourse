@@ -37,7 +37,9 @@ const UserSuggestedQuestion = ({ onClose }) => {
             const response = await fetch(`/api/suggestedquestions/${questionId}/approve`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': Cookies.get('access_token')
+
                 },
                 body: JSON.stringify(questions.find(q => q._id === questionId))
             });
@@ -53,7 +55,10 @@ const UserSuggestedQuestion = ({ onClose }) => {
         const isConfirmed = window.confirm("Are you sure you want to discard this suggestion question?");
         if (isConfirmed) {
             try {
-                const response = await fetch(`/api/suggestedquestions/${questionId}`, { method: 'DELETE' });
+                const response = await fetch(`/api/suggestedquestions/${questionId}`, {
+                    method: 'DELETE',
+                    headers: {'x-access-token': Cookies.get('access_token')}
+                });
                 if (!response.ok) throw new Error('Network response was not ok');
                 setSelectedQuestion(null);
                 setQuestions(questions.filter(question => question._id !== questionId));
