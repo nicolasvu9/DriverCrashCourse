@@ -1,0 +1,13 @@
+.footer {
+  height: 30px;
+  font-size: 10px;
+  border-top: 1px solid black;
+  color: #e4f1c9;
+  text-align: center;
+  display: flek;
+  background-color: #3f6a6f;
+  overflow: hidden;
+  width: 100%;
+
+  bottom: 0; /* Ensure the footer stays at the bottom */
+}
