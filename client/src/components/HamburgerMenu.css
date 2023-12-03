@@ -1,0 +1,40 @@
+/* Hamburger menu styles */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 20px; /* Adjusted width */
+  height: 3px;
+  background-color: #e4f1c9;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .hamburger-menu {
+    display: block;
+    margin-left: 1vh;
+  }
+
+  .hamburger-menu.open {
+    height: auto;
+  }
+
+  .bar1.open {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .bar2.open {
+    opacity: 0;
+  }
+
+  .bar3.open {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
