@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './components/LoginPage'; // Import your LoginPage
-import AdministrativePage from './components/AdministrativePage'; // Import your AdministrativePage
+import LoginPage from './components/LoginPage';
+import AdministrativePage from './components/AdministrativePage'; 
 import ProtectedRoute from './utils/ProtectedRoute';
 import Dashboard from './components/Dashboard';
 function App() {
