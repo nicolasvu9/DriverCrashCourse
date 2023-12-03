@@ -19,14 +19,16 @@
     border-radius: 8px;
     gap: 10px;
     max-height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
+    z-index: 1001;
 }
 
 .edit-modal {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw; 
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,10 +36,11 @@
 }
 
 .edit-modal-content {
-    position: relative;
+    position:relative;
+    width: 30%; /* example width */
+    margin: auto; 
     z-index: 2001;
 }
-
 button {
     width: 30%;
     display: block;

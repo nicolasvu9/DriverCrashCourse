@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css'; 
 import logo from './logo.png';
+import Footer from './Footer'
 
 const Header = () => (
   <header>
@@ -111,11 +112,6 @@ const SignupForm = ({ onLogin }) => {
   );
 };
 
-const Footer = () => (
-  <footer>
-    <p>&copy; {new Date().getFullYear()} Driver Crash Course</p>
-  </footer>
-);
 
 const LoginPage = () => {
   const navigate = useNavigate(); // Create an instance of useNavigate

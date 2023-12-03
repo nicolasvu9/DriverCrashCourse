@@ -46,7 +46,7 @@ body {
   text-decoration: none;
   margin-top: 2vh;
   display: block;
-  font-size: 12px;
+  font-size: 16px;
   color: #e4f1c9;
   text-align: center;
   line-height: 1;
@@ -59,7 +59,7 @@ body {
 
 /* Links - change color on hover */
 .topnavguide a:hover {
-  color: #3498db;
+  color: #6EB0A8;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 

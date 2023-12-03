@@ -1,6 +1,6 @@
-.footer {
+footer {
   height: 30px;
-  font-size: 10px;
+  font-size: 14px;
   border-top: 1px solid black;
   color: #e4f1c9;
   text-align: center;
@@ -9,5 +9,6 @@
   overflow: hidden;
   width: 100%;
   position:fixed;
+  padding-top: 18px;
   bottom: 0; /* Ensure the footer stays at the bottom */
 }

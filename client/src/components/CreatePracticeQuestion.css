@@ -86,7 +86,7 @@
     min-width: 80px;
 }
 
-.modal {
+.create-modal {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -99,7 +99,7 @@
     z-index: 1000;
 }
 
-.modal-content {
+.create-modal-content {
     background-color: #ffff;
     padding: 10px;
     border-radius: 5px;
