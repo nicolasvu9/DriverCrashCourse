@@ -1,18 +1,38 @@
-// ProgressPage.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./progressPage.css";
 import ProgressBar from "./progressBar.js";
 import Footer from "./Footer";
-import PracticeQuestionDone from "./PracticeQuestionDone";
-import MockExamDone from "./MockExamDone";
-import FlashCardDone from "./FlashCardDone";
+import Cookies from "js-cookie";
 
 const ProgressPage = () => {
-  const [activePage, setActivePage] = useState("practice"); // Default to Practice Page
+  const [progressData, setProgressData] = useState(null);
   const [showDonePage, setShowDonePage] = useState(false);
 
+  useEffect(() => {
+    const fetchProgressData = async () => {
+      try {
+        const response = await fetch("/api/statistics", {
+          headers: {
+            "x-access-token": Cookies.get("access_token"),
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch statistics");
+        }
+
+        const data = await response.json();
+        setProgressData(data);
+      } catch (error) {
+        console.error("Error fetching statistics", error);
+      }
+    };
+
+    fetchProgressData();
+  }, []);
+
   const handleShowDonePage = (page) => {
-    setActivePage(page);
+    // Handle logic based on the selected page
     setShowDonePage(true);
   };
 
@@ -22,46 +42,36 @@ const ProgressPage = () => {
 
   return (
     <div className="flex-container">
-      {!showDonePage && (
-        <div className="div1">
-          <div className="bubble" style={{ backgroundColor: "red" }}>
-            Practice Question: 30%
+      {!showDonePage && progressData && (
+        <>
+          <div className="div1">
+            <div className="bubble" style={{ backgroundColor: "red" }}>
+              Practice Question: {Math.round((progressData.practiceQuestionsProgress.completedPracticeQuestions / progressData.practiceQuestionsProgress.totalPracticeQuestions) * 100)}%
+            </div>
+            <ProgressBar stopValue={Math.round((progressData.practiceQuestionsProgress.completedPracticeQuestions / progressData.practiceQuestionsProgress.totalPracticeQuestions) * 100)} />
+            <button onClick={() => handleShowDonePage("practice")}>More</button>
           </div>
-          <ProgressBar stopValue={30} />
-          <button onClick={() => handleShowDonePage("practice")}>More</button>
-        </div>
-      )}
 
-      {!showDonePage && (
-        <div className="div2">
-          <div className="bubble" style={{ backgroundColor: "#FFd700" }}>
-            Mock Exam: 40%
+          <div className="div2">
+            {progressData.mockExamsTopResults.mockExamsTopResults.map((mockExamResult) => (
+              <div key={mockExamResult._id}>
+                <div className="bubble" style={{ backgroundColor: "#FFd700" }}>
+                  Mock Exam: {mockExamResult.top_result}%
+                </div>
+                <ProgressBar stopValue={mockExamResult.top_result} />
+                <button onClick={() => handleShowDonePage("mockExam")}>More</button>
+              </div>
+            ))}
           </div>
-          <ProgressBar stopValue={40} />
-          <button onClick={() => handleShowDonePage("mockExam")}>More</button>
+
+          {/* Add similar logic for FlashCard as needed */}
+        </>
+      )}
+
+      {showDonePage && (
+        <div>
+          {/* Render your done pages based on the selected page */}
         </div>
-      )}
-
-      {!showDonePage && (
-        <div className="div3">
-          <div className="bubble" style={{ backgroundColor: "lightgreen" }}>
-            FlashCard: 100%
-          </div>
-          <ProgressBar stopValue={100} />
-          <button onClick={() => handleShowDonePage("flashCard")}>More</button>
-        </div>
-      )}
-
-      {showDonePage && activePage === "practice" && (
-        <PracticeQuestionDone onGoBack={handleGoBack} />
-      )}
-
-      {showDonePage && activePage === "mockExam" && (
-        <MockExamDone onGoBack={handleGoBack} />
-      )}
-
-      {showDonePage && activePage === "flashCard" && (
-        <FlashCardDone onGoBack={handleGoBack} />
       )}
     </div>
   );

@@ -2,7 +2,7 @@
 .page {
   text-align: center;
   display: flex;
-  flex-direction: column;
+  height:88vh;
   align-items: center;
 
   /* Optional: Set a height to center vertically within the viewport */

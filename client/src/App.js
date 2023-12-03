@@ -22,11 +22,8 @@ const App = () => {
         <Route path="/Progress" element={<ProgressPage />} />
         <Route path="/Suggestion" element={<SuggestionPage />} />
         <Route path="/Video" element={<Video />} />
-        <Route
-          path="/practiceQuestionDone"
-          exact
-          component={PracticeQuestionDone}
-        />
+        
+        
       </Routes>
 
       <Footer />

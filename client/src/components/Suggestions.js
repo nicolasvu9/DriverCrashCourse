@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Suggestions.css";
-//import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 import TopNav from "./TopNav";
 import Footer from "./Footer";
 
