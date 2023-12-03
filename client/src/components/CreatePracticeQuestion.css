@@ -100,6 +100,7 @@
 }
 
 .create-modal-content {
+    position: relative;
     background-color: #ffff;
     padding: 10px;
     border-radius: 5px;
