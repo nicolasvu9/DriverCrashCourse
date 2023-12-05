@@ -1,6 +1,6 @@
 # Running the app
 
-- First run `npm install`.
+- First cd into the client folder and run `npm install`.
 - In `package.json`, change the port in "proxy" to the port on which your server is running.
 - In `src/App.js`, replace the component with the page/component you want to render.
 - Make sure the server is running, then run `npm run start`. The webpage should pop up automatically in your default browser.
@@ -31,9 +31,9 @@
 
 
 # Utils
-## Use of Cookies:
+## Use of Cookies (**make sure to run `npm install` in the client directory**):
 - `js-cookie` is a small, lightweight JavaScript API for handling browser cookies. It provides a straightforward and developer-friendly way of dealing with cookies, which are key-value pairs stored on the client's browser and commonly used for maintaining session state, personalization, and tracking user behavior across web pages.
-- At the top of the file, `import Cookies from 'js-cookies'`. (make sure to run `npm install` in the root directory)
+- At the top of the file, `import Cookies from 'js-cookies'`. 
 - Usage Example:
   ```
   import Cookies from 'js-cookie';
