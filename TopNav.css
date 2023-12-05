@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  background-color: #e3eee4;
+}
+
+/* Hamburger menu container */
+.topnav {
+  display: flex;
+  height: 7vh;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  background-color: #3f6a6f;
+  color: black;
+  justify-content: space-between;
+}
+
+/* Hamburger menu icon */
+.icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Hamburger menu lines */
+.line {
+  background-color: black;
+  height: 3px;
+  width: 25px;
+  margin-left: 2px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+/* TopNav menu */
+.topnavguide {
+  display: flex;
+  flex: 1;
+}
+
+.topnav p {
+  margin: 0;
+}
+
+.topnavguide a {
+  text-decoration: none;
+  margin-top: 2vh;
+  display: block;
+  font-size: 16px;
+  color: #e4f1c9;
+  text-align: center;
+  line-height: 1;
+  flex: 1;
+}
+
+.topnavguide a.active {
+  color: black;
+}
+
+/* Links - change color on hover */
+.topnavguide a:hover {
+  color: #6EB0A8;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .topnavguide {
+    display: none;
+  }
+
+  /* Show hamburger menu icon on smaller screens */
+  .icon {
+    display: flex;
+    margin-left: 1vh;
+    margin-top: 1vh;
+  }
+
+  /* Show TopNav menu when hamburger menu is open */
+  .topnav.open .topnavguide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    background-color: #3f6a6f;
+    z-index: 2;
+  }
+
+  /* Hamburger menu icon styles when open */
+  .icon.open .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .icon.open .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .icon.open .line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+.logo {
+  height: 100%;
+  margin-right: 10px; /* Adjust margin as needed */
+}

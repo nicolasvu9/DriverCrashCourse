@@ -1,0 +1,52 @@
+.admin-page {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+h1.page-title {
+    display: block;
+    margin: 100px;
+}
+
+.button-container {
+    display: flex;
+    width: 100%;
+}
+
+.admin-button {
+    flex: 1;
+    min-height: 300px;
+    padding: 20px;
+    margin: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #6EB0A8;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.admin-button:hover,
+.admin-button:focus {
+    transform: translateY(-15px);
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    .admin-button {
+        width: auto;
+        padding: 15px;
+        margin: 5px;
+    }
+}

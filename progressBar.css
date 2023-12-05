@@ -1,0 +1,37 @@
+/* progressBar.css */
+.progress {
+  width: 33vh;
+  height: 3vh;
+  background-color: #ccc;
+  position: relative;
+  margin-left: 6vh;
+  border-radius: 1.5vh;
+  transition:
+    background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(65, 158, 255, 1) 0%,
+    rgba(19, 194, 194, 1) 100%
+  );
+  transition:
+    width 0.5s,
+    box-shadow 0.3s ease-in-out;
+  border-radius: 1.5vh;
+}
+
+.progress:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.9); /* Add a highlighting effect */
+}
+@media screen and (min-width: 900px) {
+  .progress {
+    margin-left: 9vh;
+    width: 35vh;
+  }
+}

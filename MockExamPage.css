@@ -1,0 +1,115 @@
+.mock-exam-page {
+  font-family: "Arial", sans-serif;
+  height: 85vh;
+  color: #2b4a4f;
+  text-align: center;
+  background-color: #e3eee4;
+}
+
+.page-title {
+  font-size: 20px;
+  margin-bottom: 2vh;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2vh;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 1vh;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  color: white;
+  border: none;
+  background-color: #ffd700;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #e1ad01;
+}
+/*
+.modal {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: auto; 
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; 
+  padding: 20px; 
+}*/
+
+.modal-content {
+  padding: 1vh;
+  border-radius: 1vh;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #333;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+/* Additional styles for StartTestContent */
+.start-test-content {
+  text-align: center;
+  padding: 1vh;
+}
+
+.start-test-content h2 {
+  font-size: 24px;
+}
+
+.start-test-content p {
+  font-size: 16px;
+
+  margin-bottom: 20px;
+}
+
+.start-test-content button {
+  background-color: #e32636;
+  color: white;
+  border: 1px solid #3f6a6f;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.start-test-content button:hover {
+  background-color: #9b111e;
+}
