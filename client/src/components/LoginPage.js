@@ -126,7 +126,14 @@ const LoginPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Login failed. Please check your credentials.');
+        const data = await response.json();
+        if (data.msg && data.msg.includes('Invalid password')) {
+          throw new Error('Wrong credentials. Please check you password.');
+        }else if (data.msg && data.msg.includes('User not found')){
+          throw new Error('User not found. Please sign up first.')
+        }else{
+          throw new Error('Some unknown error.')
+        }
       }
 
       const data = await response.json();
