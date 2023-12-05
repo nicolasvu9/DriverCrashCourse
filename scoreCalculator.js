@@ -5,11 +5,9 @@ const calculateScore = (questions, selectedChoices) => {
 
   questions.forEach((question, index) => {
     const selectedChoice = selectedChoices[index];
-    if (
-      selectedChoice &&
-      question.choices.find((choice) => choice.choice_text === selectedChoice)
-        ?.isCorrect
-    ) {
+    const correctChoiceId = question.correctChoiceId;
+
+    if (selectedChoice === correctChoiceId) {
       // Increase the score if the selected choice is correct
       score += 1;
     }

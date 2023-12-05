@@ -9,26 +9,20 @@ const ProgressPage = () => {
   const [showDonePage, setShowDonePage] = useState(false);
 
   useEffect(() => {
-    const fetchProgressData = async () => {
-      try {
-        const response = await fetch("/api/statistics", {
-          headers: {
-            "x-access-token": Cookies.get("access_token"),
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch statistics");
-        }
-
-        const data = await response.json();
-        setProgressData(data);
-      } catch (error) {
-        console.error("Error fetching statistics", error);
-      }
+    // Simulated progress data
+    const simulatedData = {
+      practiceQuestionsProgress: {
+        completedPracticeQuestions: 20,
+        totalPracticeQuestions: 50,
+      },
+      mockExamsTopResults: [
+        { _id: "mockExam1", top_result: 100},
+        // Add more mock exam data as needed
+      ],
+      // Add similar data for FlashCard as needed
     };
 
-    fetchProgressData();
+    setProgressData(simulatedData);
   }, []);
 
   const handleShowDonePage = (page) => {
@@ -45,21 +39,19 @@ const ProgressPage = () => {
       {!showDonePage && progressData && (
         <>
           <div className="div1">
-            <div className="bubble" style={{ backgroundColor: "red" }}>
+            <div className="bubble1" >
               Practice Question: {Math.round((progressData.practiceQuestionsProgress.completedPracticeQuestions / progressData.practiceQuestionsProgress.totalPracticeQuestions) * 100)}%
             </div>
             <ProgressBar stopValue={Math.round((progressData.practiceQuestionsProgress.completedPracticeQuestions / progressData.practiceQuestionsProgress.totalPracticeQuestions) * 100)} />
-            <button onClick={() => handleShowDonePage("practice")}>More</button>
           </div>
 
           <div className="div2">
-            {progressData.mockExamsTopResults.mockExamsTopResults.map((mockExamResult) => (
+            {progressData.mockExamsTopResults.map((mockExamResult) => (
               <div key={mockExamResult._id}>
-                <div className="bubble" style={{ backgroundColor: "#FFd700" }}>
-                  Mock Exam: {mockExamResult.top_result}%
+                <div className="bubble2" >
+                  Mock Exam Top Result: {mockExamResult.top_result}%
                 </div>
                 <ProgressBar stopValue={mockExamResult.top_result} />
-                <button onClick={() => handleShowDonePage("mockExam")}>More</button>
               </div>
             ))}
           </div>
@@ -68,11 +60,6 @@ const ProgressPage = () => {
         </>
       )}
 
-      {showDonePage && (
-        <div>
-          {/* Render your done pages based on the selected page */}
-        </div>
-      )}
     </div>
   );
 };

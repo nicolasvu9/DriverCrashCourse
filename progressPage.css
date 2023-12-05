@@ -1,17 +1,18 @@
 .flex-container {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  flex-wrap: wrap;
   /*background-color: white;*/
   height: 88vh;
   text-align: center;
   background-color: #e3eee4;
+  
 }
 
 .div1,
-.div2,
-.div3 {
+.div2
+{
   box-sizing: border-box;
-  background-color: white;
+  flex:1;
   margin: 0px;
   align-items: center;
   justify-content: center;
@@ -21,150 +22,83 @@
   background-color: #e3eee4;
 }
 
-.div1 {
-  flex: 33.33%;
-  border-right: 1px solid #6497b1;
-}
-.div2 {
-  flex: 33.33%;
-  border-right: 1px solid #6497b1;
-}
-.div3 {
-  flex: 33.33%;
-}
 
-.bubble {
-  position: relative;
+.bubble1 {
   width: 25vh;
   height: 25vh;
-  background-color: rgba(234, 153, 32, 0.726);
-  color: #fff;
+  margin-left:40vh;
+  background-color: #95D9DB;
+  color: #FFFFE8;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   margin-top: 6vh;
-  margin-left: 10vh;
   margin-bottom: 4vh;
   transition:
     background-color 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out,
     transform 0.3s ease-in-out;
-  box-shadow:
-    rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
-    rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px,
-    rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px,
-    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
-/*.bubble:hover {
+.bubble1:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  background-color: rgba(255, 255, 255, 0.9); 
+  
   transform: scale(1.05); 
-}*/
-
-/* Add this style to your existing CSS */
-/*.div1 button {
-  margin-top: 10px; 
-  padding: 5px 10px; 
-  font-size: 10px; 
-  background-color: white; 
-  color: #333; 
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 120px; 
 }
 
-.div1 button:hover {
-  background-color: #999; 
-}*/
-
-/* CSS */
-.div1 button,
-.div2 button,
-.div3 button {
-  margin-top: 5vh;
-  background-image: linear-gradient(#f7f8fa, #e7e9ec);
-  border-color: #adb1b8 #a2a6ac #8d9096;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 3px;
-  box-shadow: rgba(255, 255, 255, 0.6) 0 1px 0 inset;
-  box-sizing: border-box;
-  color: #0f1111;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Amazon Ember", Arial, sans-serif;
-  font-size: 14px;
-  height: 29px;
-  font-size: 13px;
-  outline: 0;
-  overflow: hidden;
-  padding: 0 10px;
-  text-align: center;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
+.bubble2 {
+  
+  width: 25vh;
+  height: 25vh;
+  margin-left:40vh;
+  background-color: #95D9DB;
+  color: #FFFFE8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-top: 6vh;
+  
+  margin-bottom: 4vh;
+  transition:
+    background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
-.div1 button:active,
-.div2 button:active,
-.div3 button:active {
-  border-bottom-color: #a2a6ac;
+.bubble2:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  
+  transform: scale(1.05); 
 }
 
-.div1 button:active:hover,
-.div2 button:active:hover,
-.div3 button:active:hover {
-  border-bottom-color: #a2a6ac;
-}
 
-.div1 button:hover,
-.div2 button:hover,
-.div3 button:hover {
-  border-color: #a2a6ac #979aa1 #82858a;
-}
 
-.div1 button:focus,
-.div2 button:focus,
-.div3 button:focus {
-  border-color: #e77600;
-  box-shadow: rgba(228, 121, 17, 0.5) 0 0 3px 2px;
-  outline: 0;
-}
+
 
 @media screen and (max-width: 600px) {
   .div1,
-  .div2,
-  .div3 {
+  .div2{
     flex: 100%; /* Two columns for screen width 600px and above */
   }
+  .bubble1,
+  .bubble2{
+    margin-left:20vh;
+  }
+
 }
 
-@media screen and (min-width: 600px) and (max-with: 799px) {
+
+@media screen and (min-width: 1100px) {
   .div1,
-  .div2,
-  .div3 {
-    flex: 33.33%; /* Two columns for screen width 600px and above */
+  .div2{
+    flex: 50%; /* Two columns for screen width 600px and above */
   }
+  
 }
 
-@media screen and (min-width: 900px) {
-  .div1,
-  .div2,
-  .div3 {
-    flex: 33.33%; /* Two columns for screen width 600px and above */
-  }
-  .bubble {
-    margin-left: 13vh;
-  }
-}

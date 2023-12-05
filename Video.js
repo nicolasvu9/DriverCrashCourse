@@ -9,7 +9,7 @@ import RoadSafety from "./RoadSafety.jpg";
 
 const Video = () => {
   const externalLink =
-    "https://saaq.gouv.qc.ca/en/drivers-licences/canadian-foreign-drivers-licence";
+  "https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/driving.html";
   const passengerLicence =
     "https://saaq.gouv.qc.ca/en/drivers-licences/obtaining-licence/passenger-vehicle-class-5";
   const appointment = "https://saaq.gouv.qc.ca/en/make-appointment";

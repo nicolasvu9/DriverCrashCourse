@@ -18,9 +18,8 @@ const Timer = ({ initialTime, onTimeUpdate }) => {
   };
 
   const progressGradient = `conic-gradient(
-    #1a9602 0%,                  /* green */
-    #fccf03 ${calculatePercentage()}%, /* yellow */
-    #ff1700 ${calculatePercentage()}%, /* red */
+    #F3F497 ${calculatePercentage()}%,/* green */
+    #FFC93D 0%, /* red */
     #000000 100%                 /* Black */
 )`;
 

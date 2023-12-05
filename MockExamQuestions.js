@@ -16,34 +16,66 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
   const [showCongratulations, setShowCongratulations] = useState(false);
   const navigate = useNavigate();
 
+  const dummyQuestions = [
+    {
+      id: 1,
+      text: "What is the largest planet in our solar system?",
+      choices: [
+        { id: "A", text: "Earth" },
+        { id: "B", text: "Jupiter" },
+        { id: "C", text: "Mars" },
+        { id: "D", text: "Venus" },
+      ],
+      correctChoiceId: "B",
+    },
+    {
+      id: 2,
+      text: "Who wrote the play 'Romeo and Juliet'?",
+      choices: [
+        { id: "A", text: "Charles Dickens" },
+        { id: "B", text: "William Shakespeare" },
+        { id: "C", text: "Jane Austen" },
+        { id: "D", text: "Mark Twain" },
+      ],
+      correctChoiceId: "B",
+    },
+    {
+      id: 3,
+      text: "What is the capital of Japan?",
+      choices: [
+        { id: "A", text: "Beijing" },
+        { id: "B", text: "Seoul" },
+        { id: "C", text: "Tokyo" },
+        { id: "D", text: "Bangkok" },
+      ],
+      correctChoiceId: "C",
+    },
+    // Add more dummy questions as needed
+  ];
+
   useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await fetch(`/api/mockexams/questions/${mockExamId}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch questions");
-        }
-
-        const data = await response.json();
-        setQuestions(data);
-      } catch (error) {
-        console.error("Error fetching questions", error);
-      }
-    };
-
-    fetchQuestions();
-  }, [mockExamId]);
+    // Use dummy questions for now
+    setQuestions(dummyQuestions);
+  }, []);
 
   const handleNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) =>
-      prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex,
+      prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex
     );
-    setSelectedChoice(null);
+    setSelectedChoices((prevChoices) => {
+      const updatedChoices = { ...prevChoices };
+      updatedChoices[currentQuestionIndex] = updatedChoices[currentQuestionIndex] || null;
+      return updatedChoices;
+    });
   };
-
+  
   const handlePreviousQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-    setSelectedChoice(null);
+    setSelectedChoices((prevChoices) => {
+      const updatedChoices = { ...prevChoices };
+      updatedChoices[currentQuestionIndex] = updatedChoices[currentQuestionIndex] || null;
+      return updatedChoices;
+    });
   };
 
   const handleBackButtonClick = () => {
@@ -102,8 +134,9 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
     <div className="mock-exam-questions">
       {showCongratulations ? (
         <CongratulationsPage
-          score={calculateScore(questions, selectedChoices)}
-        />
+        score={calculateScore(questions, selectedChoices)}
+        onBackToMockExam={onBackButtonClick} // Pass the callback
+      />
       ) : (
         <div>
           <Timer
@@ -119,29 +152,22 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
                 </h3>
                 <p>{questions[currentQuestionIndex].text}</p>
                 <form className="choices">
-                  {questions[currentQuestionIndex].choices.map(
-                    (choice, index) => (
-                      <div key={index} className="choice">
-                        <input
-                          type="radio"
-                          id={`choice${index}`}
-                          name="choices"
-                          value={choice.choice_text}
-                          checked={
-                            selectedChoices[currentQuestionIndex] ===
-                            choice.choice_text
-                          }
-                          onChange={() =>
-                            handleChoiceChange(choice.choice_text)
-                          }
-                        />
-                        <label htmlFor={`choice${index}`}>
-                          {choice.choice_text}
-                        </label>
-                      </div>
-                    ),
-                  )}
-                </form>
+            {questions[currentQuestionIndex].choices.map((choice) => (
+              <div key={choice.id} className="choice">
+                <input
+                  type="radio"
+                  id={`choice${choice.id}`}
+                  name="choices"
+                  value={choice.id}
+                  checked={
+                    selectedChoices[currentQuestionIndex] === choice.id
+                  }
+                  onChange={() => handleChoiceChange(choice.id)}
+                />
+                <label htmlFor={`choice${choice.id}`}>{choice.text}</label>
+              </div>
+            ))}
+          </form>
               </div>
             ) : (
               <p>No more questions. Test completed!</p>

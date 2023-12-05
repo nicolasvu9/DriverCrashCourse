@@ -15,6 +15,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2vh;
+  background-color: white;
 }
 
 th,
@@ -28,10 +29,10 @@ th {
   background-color: #f2f2f2;
 }
 
-button {
+.mockbutton {
   color: white;
   border: none;
-  background-color: #ffd700;
+  background-color: #6eb0a8;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -43,9 +44,9 @@ button {
 button:hover {
   background-color: #e1ad01;
 }
-/*
+
 .modal {
-  display: block;
+  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -56,7 +57,7 @@ button:hover {
   align-items: center;
   background-color: transparent; 
   padding: 20px; 
-}*/
+}
 
 .modal-content {
   padding: 1vh;
@@ -98,7 +99,7 @@ button:hover {
 }
 
 .start-test-content button {
-  background-color: #e32636;
+  background-color: #6eb0a8;
   color: white;
   border: 1px solid #3f6a6f;
 

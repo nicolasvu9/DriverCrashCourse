@@ -4,28 +4,16 @@ import MockExamQuestions from "./MockExamQuestions.js";
 import Footer from "./Footer";
 
 const MockExamPage = () => {
-  const [mockExams, setMockExams] = useState([]);
+  const [mockExams] = useState([
+    { _id: 1 },
+    { _id: 2 },
+    { _id: 3 },
+    // Add more mock exams as needed
+  ]);
   const [selectedMockExamId, setSelectedMockExamId] = useState(null);
   const [showStartModal, setShowStartModal] = useState(false);
   const [showExamQuestions, setShowExamQuestions] = useState(false);
 
-  useEffect(() => {
-    const fetchMockExams = async () => {
-      try {
-        const response = await fetch('/api/mockexams');
-        if (!response.ok) {
-          throw new Error('Failed to fetch mock exams');
-        }
-  
-        const data = await response.json();
-        setMockExams(data);
-      } catch (error) {
-        console.error('Error fetching mock exams', error);
-      }
-    };
-  
-    fetchMockExams();
-  }, []);
 
   const handleStartTest = (mockExamId) => {
     setSelectedMockExamId(mockExamId);
@@ -38,8 +26,12 @@ const MockExamPage = () => {
   };
 
   const handleBackToMockExamPage = () => {
+    
     setShowExamQuestions(false);
+    
   };
+
+
 
   return (
     <div className="mock-exam-page">
@@ -61,9 +53,11 @@ const MockExamPage = () => {
             <tbody>
               {mockExams.map((mockExam) => (
                 <tr key={mockExam._id}>
-                  <td>{mockExam._id}</td>
+                  <td>Mock Exam {mockExam._id}</td>
                   <td>
-                    <button onClick={() => handleStartTest(mockExam._id)}>
+                    <button 
+                    className="mockbutton" 
+                    onClick={() => handleStartTest(mockExam._id)}>
                       Start the test
                     </button>
                   </td>

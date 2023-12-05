@@ -13,6 +13,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 2vw;
+  background-color: #EBFBEE;
 }
 
 .choices {
@@ -77,7 +78,7 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  widht: 100%;
+  
 }
 
 .nav-button,
@@ -118,7 +119,7 @@
   .back {
     position: fixed;
     top: 5px;
-    right: 10px;
+    left: 10px;
   }
 
   /* Add more specific styles for smaller screens if needed */
