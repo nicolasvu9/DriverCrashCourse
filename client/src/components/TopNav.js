@@ -1,6 +1,9 @@
+// components/TopNav.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { logout } from '../utils/auth'; // Import the logout function
 import "./TopNav.css";
+import logo from "./logo.png";
 
 const TopNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,13 +12,18 @@ const TopNav = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLogout = () => {
+    logout(); // Call the logout function
+  };
   return (
     <div className={`topnav ${isMenuOpen ? "open" : ""}`}>
       <div className="icon" onClick={toggleMenu}>
         <div className="line"></div>
         <div className="line"></div>
         <div className="line"></div>
+        
       </div>
+      <img src={logo} alt="Logo" className="logo" />
       <div className="topnavguide">
         <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
           DashBoard
@@ -35,10 +43,10 @@ const TopNav = () => {
         <Link to="/suggestion" onClick={() => setIsMenuOpen(false)}>
           Suggestion
         </Link>
-        <Link to="/video" onClick={() => setIsMenuOpen(false)}>
-          Video
+        <Link to="/Video" onClick={() => setIsMenuOpen(false)}>
+          Resources
         </Link>
-        <Link to="/logout" onClick={() => setIsMenuOpen(false)}>
+        <Link to="/logout" onClick={handleLogout}>
           LogOut
         </Link>
       </div>
