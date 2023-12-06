@@ -53,24 +53,24 @@ const ProgressPage = () => {
           </div>
 
           <div className="div2">
-  {Array.isArray(progressData.mockExamsTopResults.mockExamsTopResults) && progressData.mockExamsTopResults.mockExamsTopResults
-    .sort((a, b) => a.mock_exam_id.name.localeCompare(b.mock_exam_id.name))
-    .map((mockExamResult) => (
-      <div key={mockExamResult._id}>
-        <div className="bubble2">
-          Mock Exam: {mockExamResult.mock_exam_id.name}, Top Result: {mockExamResult.top_result}%
-        </div>
-        <ProgressBar stopValue={mockExamResult.top_result} />
-      </div>
-    ))}
-</div>
-
-          
+            {Array.isArray(progressData.mockExamsTopResults.mockExamsTopResults) &&
+              progressData.mockExamsTopResults.mockExamsTopResults
+                .slice()
+                .sort((a, b) => b.top_result - a.top_result) // Sort by top_result in descending order
+                .slice(0, 1) // Take only the first (highest) entry
+                .map((mockExamResult) => (
+                  <div key={mockExamResult._id}>
+                    <div className="bubble2">
+                      Mock Exam: {mockExamResult.mock_exam_id.name}, Top Result: {mockExamResult.top_result}%
+                    </div>
+                    <ProgressBar stopValue={mockExamResult.top_result} />
+                  </div>
+                ))}
+          </div>
         </>
       )}
     </div>
   );
 };
-
 
 export default ProgressPage;
