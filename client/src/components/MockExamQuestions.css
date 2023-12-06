@@ -1,0 +1,171 @@
+/* MockExamQuestions.css */
+.mock-exam-questions {
+  position: relative;
+}
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 2vw;
+  background-color: #EBFBEE;
+}
+
+.choices {
+  margin-top: 10px;
+}
+
+.choice {
+  margin-bottom: 8px;
+}
+
+.back {
+  position: fixed;
+
+  right: 10px;
+}
+.back-button {
+  background-image: linear-gradient(#f7f8fa, #e7e9ec);
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.6) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember", Arial, sans-serif;
+
+  height: 29px;
+  font-size: 10px;
+  outline: 0;
+  overflow: hidden;
+  width: 70px;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.back-button:active {
+  border-bottom-color: #a2a6ac;
+}
+
+.back-button:active:hover {
+  border-bottom-color: #a2a6ac;
+}
+
+.back-button:hover {
+  border-color: #a2a6ac #979aa1 #82858a;
+}
+
+.back-button:focus {
+  border-color: #e77600;
+  box-shadow: rgba(228, 121, 17, 0.5) 0 0 3px 2px;
+  outline: 0;
+}
+.nav-buttons {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  
+}
+
+.nav-button,
+.submit-button {
+  font-size: 15px;
+
+  margin: 0 1vh;
+  background-color: white;
+  color: #333;
+}
+
+.nav-button:hover {
+  background-color: #999;
+}
+.submit-button:hover {
+  background-color: #999;
+}
+
+.submit-button {
+  display: block; /* Initially hidden */
+}
+
+/* Show submit button when it's the last question */
+.mock-exam-questions .question-card:last-child .submit-button {
+  display: inline-block;
+}
+
+@media screen and (max-width: 550px) {
+  .question-card {
+    height: 65vh;
+    font-size: 2vh;
+  }
+
+  .nav-buttons {
+    margin-top: 3px;
+  }
+
+  .back {
+    position: fixed;
+    top: 5px;
+    left: 10px;
+  }
+
+  /* Add more specific styles for smaller screens if needed */
+}
+
+@media screen and (min-width: 550px) and (max-width: 650px) {
+  .question-card {
+    height: 60vh;
+    font-size: 2vh;
+  }
+
+  .nav-buttons {
+    margin-top: 1px;
+  }
+  .back-button {
+  }
+
+  /* Add more specific styles for smaller screens if needed */
+}
+
+@media screen and (min-width: 650px) and (max-width: 800px) {
+  .question-card {
+    height: 65vh;
+    font-size: 3vh;
+  }
+
+  .nav-buttons {
+    margin-top: 1px;
+    margin-bottom: 2px; /* Adjust this value as needed to prevent getting too close to the footer */
+  }
+  .back-button {
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .question-card {
+    height: 65vh;
+    font-size: 3vh;
+  }
+
+  h3 {
+    font-size: 5vh;
+  }
+  .nav-buttons {
+    margin-top: 1vh;
+  }
+  .back-button {
+  }
+}
