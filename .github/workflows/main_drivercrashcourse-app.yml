@@ -20,12 +20,12 @@ jobs:
 
       - name: npm install - server
         run: |
-          cd drivercrashcourse/server
+          cd server
           npm install
 
       - name: npm install - client
         run: |
-          cd drivercrashcourse/client
+          cd client
           npm install
           npm run build
           cp -r ./build ../server/public
