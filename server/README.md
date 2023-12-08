@@ -16,10 +16,10 @@ Install node modules with
 The config file with the mongo db access is encrypted, to decrypt use the below command and enter the course in lowercase with the numbers when prompted
 
 Encrypt
-`gpg -c .env`
+`gpg -c config.env`
 
 Decrypt
-`gpg -d ./.env.gpg`
+`gpg -d ./config.env.gpg`
 
 Run server
 `npm run dev`
