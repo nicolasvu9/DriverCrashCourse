@@ -8,7 +8,7 @@ async function main() {
   const app = express();
   dotenv.config({ path: "./config.env" });
 
-  const port = process.env.SERVER_PORT || 5000;
+  const port = process.env.PORT || 5000;
 
   await mongoose.connect(process.env.MONGODB_URI);
 
