@@ -34,7 +34,7 @@ jobs:
           zip -r drivercrashcourse-app.zip server
           
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: drivercrashcourse-app
           path: drivercrashcourse-app.zip
