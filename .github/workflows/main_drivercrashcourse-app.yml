@@ -1,54 +1,59 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Deploy to Azure Web App
+name: Build and deploy Node.js app to Azure Web App - drivercrashcourse-app
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: "20.x"
 
-      # Build React app
-      - name: Build React app
-        working-directory: ./client
+      - name: npm install - server
         run: |
+          cd drivercrashcourse/server
+          npm install
+
+      - name: npm install - client
+        run: |
+          cd drivercrashcourse/client
           npm install
           npm run build
+          cp -r ./build ../server/public
 
-      # Build Node.js Express API
-      - name: Build Node.js API
-        working-directory: ./server
-        run: |
-          npm install
-          npm run build
-
-      # Deploy to Azure Web App - React app
-      - name: Deploy React app to Azure
-        uses: Azure/webapps-deploy@v2
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
         with:
-          app-name: 'your-react-app-name'
-          slot-name: 'production' # Change this to your desired slot name
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_45995785BB1E4B878C80177B6D23F7D8 }}
-          package: ./client/build
+          name: drivercrashcourse-app
+          path: drivercrashcourse/server
 
-      # Deploy to Azure Web App - Node.js API
-      - name: Deploy Node.js API to Azure
-        uses: Azure/webapps-deploy@v2
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: "Production"
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
         with:
-          app-name: 'your-node-api-app-name'
-          slot-name: 'production' # Change this to your desired slot name
+          name: drivercrashcourse-app
+
+      - name: "Deploy to Azure Web App"
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "drivercrashcourse-app"
+          slot-name: "Production"
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_45995785BB1E4B878C80177B6D23F7D8 }}
-          package: ./server

@@ -1,4 +1,3 @@
-import config from "config";
 import User from "../models/auth/user.js";
 import jwt from "jsonwebtoken";
 
@@ -9,7 +8,7 @@ export function verifyToken(req, res, next) {
     res.status(400).send({ message: "No token" });
   }
   try {
-    const decoded = jwt.verify(token, config.get("auth.secret"));
+    const decoded = jwt.verify(token, process.env.AUTH_SECRET);
     req.userId = decoded.id;
     next();
   } catch (err) {
