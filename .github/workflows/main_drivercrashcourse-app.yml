@@ -60,5 +60,5 @@ jobs:
         with:
           app-name: "drivercrashcourse-app"
           slot-name: "Production"
-          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_45995785BB1E4B878C80177B6D23F7D8 }}
+          package: .
