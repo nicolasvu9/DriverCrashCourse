@@ -12,11 +12,13 @@ import { verifyToken, isAdmin } from "../middlewares/auth.js";
 
 const router = Router();
 
+// Get all suggested questions by users
 router.get("/", [verifyToken], async function (_req, res) {
   const suggestedQuestions = await getSuggestedQuestions();
   res.send(suggestedQuestions);
 });
 
+// Add new suggestion from user waiting to be approved
 router.post("/", [verifyToken], async function (req, res) {
   try {
     const response = await addSuggestedQuestion(req.body);
@@ -26,6 +28,7 @@ router.post("/", [verifyToken], async function (req, res) {
   }
 });
 
+// Approve new suggestion from user by admin
 router.post("/:_id/approve", [verifyToken, isAdmin], async function (req, res) {
   try {
     const id = req.params._id;
@@ -36,6 +39,7 @@ router.post("/:_id/approve", [verifyToken, isAdmin], async function (req, res) {
   }
 });
 
+// Modify suggestion question
 router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const id = req.params._id;
@@ -46,6 +50,7 @@ router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   }
 });
 
+// Remove suggestion question
 router.delete("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
