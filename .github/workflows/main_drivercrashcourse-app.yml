@@ -54,6 +54,10 @@ jobs:
       - run: |
           unzip drivercrashcourse-app.zip
           rm drivercrashcourse-app.zip
+      - name: Print Current Directory
+        run: |
+          echo "Current Directory: $(pwd)"
+          ls -al
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
