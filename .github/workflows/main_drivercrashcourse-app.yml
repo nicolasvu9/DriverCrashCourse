@@ -32,7 +32,7 @@ jobs:
       
       - run: |
           cd server
-          zip -r ../drivercrashcourse-app.zip *
+          zip -r ../../drivercrashcourse-app.zip *
           
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
