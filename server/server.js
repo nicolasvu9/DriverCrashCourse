@@ -1,14 +1,15 @@
 import express, { json } from "express";
 import routes from "./routes/routes.js";
 import mongoose from "mongoose";
-import config from "config";
+import dotenv from "dotenv";
 
 async function main() {
   const app = express();
+  dotenv.config();
 
-  const port = config.get("server.port") || 5000;
+  const port = process.env.SERVER_PORT || 5000;
 
-  await mongoose.connect(config.get("mongodb.URI"));
+  await mongoose.connect(process.env.MONGODB_URI);
 
   app.use(json());
 

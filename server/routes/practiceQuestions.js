@@ -12,6 +12,7 @@ import { verifyToken, isAdmin } from "../middlewares/auth.js";
 
 const router = Router();
 
+// Get all practice questions for admin view
 router.get("/admin", [verifyToken, isAdmin], async function (req, res) {
   try {
     const practiceQuestions = await getAdminPracticeQuestions();
@@ -21,6 +22,7 @@ router.get("/admin", [verifyToken, isAdmin], async function (req, res) {
   }
 });
 
+// Get all practice questions and with user completion progress
 router.get("/", [verifyToken], async function (req, res) {
   try {
     const practiceQuestions = await getUserPracticeQuestions(req);
@@ -30,6 +32,7 @@ router.get("/", [verifyToken], async function (req, res) {
   }
 });
 
+// Add new practice question
 router.post("/", [verifyToken, isAdmin], async function (req, res) {
   try {
     const newPracticeQuestion = await addPracticeQuestion(req.body);
@@ -39,6 +42,7 @@ router.post("/", [verifyToken, isAdmin], async function (req, res) {
   }
 });
 
+// Change user completion progress for a question
 router.post("/:_id/completed", [verifyToken], async function (req, res) {
   try {
     const newUserProgressQuestion = await setUserQuestionProgress(req);
@@ -48,6 +52,7 @@ router.post("/:_id/completed", [verifyToken], async function (req, res) {
   }
 });
 
+// Modify practice question
 router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;
@@ -61,6 +66,7 @@ router.put("/:_id", [verifyToken, isAdmin], async function (req, res) {
   }
 });
 
+// Delete practice question
 router.delete("/:_id", [verifyToken, isAdmin], async function (req, res) {
   try {
     const documentId = req.params._id;

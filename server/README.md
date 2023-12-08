@@ -10,27 +10,30 @@ Clone Repo
 Go to server directory
 `cd server`
 
-Install node modules with 
+Install node modules with
 `npm install`
 
 The config file with the mongo db access is encrypted, to decrypt use the below command and enter the course in lowercase with the numbers when prompted
 
 Encrypt
-`gpg -c ./config/default.json`
+`gpg -c .env`
 
 Decrypt
-`gpg ./config/default.json.gpg`
+`gpg -d ./.env.gpg`
 
 Run server
 `npm run dev`
 
 # Authentication
+
 We use JWT to authenticate and authorize requests. Add token to HEADER
+
 ```JSON
 {
   "x-access-token": "<TOKEN>"
 }
 ```
+
 In Postman
 
 <img width="738" alt="image" src="https://github.com/nicolasvu9/DriverCrashCourse/assets/77313877/ef37911f-ec40-4d82-95f5-a9e0a5086cf3">
@@ -43,8 +46,8 @@ In Postman
 
 ```json
 {
-    "username": "nicolas",
-    "password": "password"
+  "username": "nicolas",
+  "password": "password"
 }
 ```
 
@@ -62,8 +65,8 @@ Successfully signed up
 
 ```json
 {
-    "username": "nicolas",
-    "password": "password"
+  "username": "nicolas",
+  "password": "password"
 }
 ```
 
@@ -71,14 +74,12 @@ Successfully signed up
 
 ```json
 {
-    "_id": "6566954b27350a14f671fcbf",
-    "username": "user",
-    "access_token": "<TOKEN>",
-    "role": "user"
+  "_id": "6566954b27350a14f671fcbf",
+  "username": "user",
+  "access_token": "<TOKEN>",
+  "role": "user"
 }
 ```
-
-
 
 # Practice Questions
 
@@ -105,7 +106,8 @@ Successfully signed up
   // ... more practice questions
 ]
 ```
-## Get all practice questions for a user, with  it's current status of completion per question
+
+## Get all practice questions for a user, with it's current status of completion per question
 
 ### Request
 
@@ -129,7 +131,6 @@ Successfully signed up
   // ... more practice questions
 ]
 ```
-
 
 ## Create a new practice question
 
@@ -165,6 +166,7 @@ Successfully signed up
 ```
 
 ## Set Question as Completed for User
+
 This is to be done after a question is completed, to store the progress in practice questions
 
 ### Request
@@ -175,10 +177,10 @@ This is to be done after a question is completed, to store the progress in pract
 
 ```json
 {
-    "question_id": "65669dfb3441e42e4ffef3e0",
-    "user_id": "6565840af2af5e6e372d59e8",
-    "_id": "6566a5660b6ea1ec537d7a57",
-    "__v": 0
+  "question_id": "65669dfb3441e42e4ffef3e0",
+  "user_id": "6565840af2af5e6e372d59e8",
+  "_id": "6566a5660b6ea1ec537d7a57",
+  "__v": 0
 }
 ```
 
@@ -357,18 +359,19 @@ Returns deleted question object
 
 ```json
 {
-    "result": 95
+  "result": 95
 }
 ```
 
 ### Response
+
 ```json
 {
-    "_id": "65668b3de78a99fa4bacc5e6",
-    "mock_exam_id": "65668a606140fa0fa188ab2b",
-    "user_id": "6565840af2af5e6e372d59e8",
-    "__v": 0,
-    "top_result": 95
+  "_id": "65668b3de78a99fa4bacc5e6",
+  "mock_exam_id": "65668a606140fa0fa188ab2b",
+  "user_id": "6565840af2af5e6e372d59e8",
+  "__v": 0,
+  "top_result": 95
 }
 ```
 
@@ -436,31 +439,30 @@ This deletes the suggested question and adds it to the practice questions. Can b
 ```
 
 # User Statistics
+
 `GET /api/statistics`
 
 ### Response
 
 ```json
 {
-    "practiceQuestionsProgress": {
-        "totalPracticeQuestions": 12,
-        "completedPracticeQuestions": 1
-    },
-    "mockExamsTopResults": {
-        "mockExamsTopResults": [
-            {
-                "_id": "65669886e78a99fa4bd0ad1e",
-                "mock_exam_id": {
-                    "_id": "65668a606140fa0fa188ab2b",
-                    "name": "Sample Mock Exam"
-                },
-                "user_id": "6565840af2af5e6e372d59e8",
-                "__v": 0,
-                "top_result": 95
-            }
-        ]
-    }
+  "practiceQuestionsProgress": {
+    "totalPracticeQuestions": 12,
+    "completedPracticeQuestions": 1
+  },
+  "mockExamsTopResults": {
+    "mockExamsTopResults": [
+      {
+        "_id": "65669886e78a99fa4bd0ad1e",
+        "mock_exam_id": {
+          "_id": "65668a606140fa0fa188ab2b",
+          "name": "Sample Mock Exam"
+        },
+        "user_id": "6565840af2af5e6e372d59e8",
+        "__v": 0,
+        "top_result": 95
+      }
+    ]
+  }
 }
 ```
-
-

@@ -1,5 +1,4 @@
 import User from "../models/auth/user.js";
-import config from "config";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -32,7 +31,7 @@ export async function signIn(req) {
       throw new Error("Invalid password");
     }
 
-    const token = jwt.sign({ id: user.id }, config.get("auth.secret"));
+    const token = jwt.sign({ id: user.id }, process.env.AUTH_SECRET);
     return {
       _id: user.id,
       username: user.username,
