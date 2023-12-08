@@ -6,7 +6,7 @@ import cors from "cors";
 
 async function main() {
   const app = express();
-  dotenv.config();
+  dotenv.config({ path: "./config.env" });
 
   const port = process.env.SERVER_PORT || 5000;
 
