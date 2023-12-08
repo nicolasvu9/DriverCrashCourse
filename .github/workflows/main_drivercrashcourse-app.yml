@@ -1,0 +1,54 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Deploy to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      # Build React app
+      - name: Build React app
+        working-directory: ./client
+        run: |
+          npm install
+          npm run build
+
+      # Build Node.js Express API
+      - name: Build Node.js API
+        working-directory: ./server
+        run: |
+          npm install
+          npm run build
+
+      # Deploy to Azure Web App - React app
+      - name: Deploy React app to Azure
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: 'your-react-app-name'
+          slot-name: 'production' # Change this to your desired slot name
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_45995785BB1E4B878C80177B6D23F7D8 }}
+          package: ./client/build
+
+      # Deploy to Azure Web App - Node.js API
+      - name: Deploy Node.js API to Azure
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: 'your-node-api-app-name'
+          slot-name: 'production' # Change this to your desired slot name
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_45995785BB1E4B878C80177B6D23F7D8 }}
+          package: ./server

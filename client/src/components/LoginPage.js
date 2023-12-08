@@ -5,11 +5,7 @@ import './LoginPage.css';
 import logo from './logo.png';
 import Footer from './Footer'
 
-const Header = () => (
-  <header>
-    <img src={logo} alt="Logo" width="40px" />
-  </header>
-);
+
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -154,7 +150,7 @@ const LoginPage = () => {
 
   return (
     <div>
-      <Header />
+      
       <div className="forms-container">
         <LoginForm onLogin={handleLogin} />
         <div className="vertical-line"></div>
