@@ -5,8 +5,8 @@ import Timer from "./Timer"; // Assuming the Timer component is in the same dire
 import calculateScore from "./scoreCalculator";
 /*MockExamQuestions*/
 import CongratulationsPage from "./CongratulationsPage";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+import Cookies from 'js-cookie';
 
 const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
   const [questions, setQuestions] = useState([]);
@@ -14,14 +14,22 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
   const [timer, setTimer] = useState(3600);
   const [selectedChoices, setSelectedChoices] = useState({});
   const [showCongratulations, setShowCongratulations] = useState(false);
-  const navigate = useNavigate();
+  const accessToken = Cookies.get('access_token');
+  
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch(`/api/mockexams/questions/${mockExamId}`);
+        const response = await fetch(`/api/mockexams/questions/${mockExamId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': Cookies.get('access_token'),
+          },
+        });
+
         if (!response.ok) {
-          throw new Error("Failed to fetch questions");
+          throw new Error('Failed to fetch questions');
         }
 
         const data = await response.json();
@@ -32,18 +40,27 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
     };
 
     fetchQuestions();
-  }, [mockExamId]);
+}, [mockExamId, accessToken]);
+
 
   const handleNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) =>
-      prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex,
+      prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex
     );
-    setSelectedChoice(null);
+    setSelectedChoices((prevChoices) => {
+      const updatedChoices = { ...prevChoices };
+      updatedChoices[currentQuestionIndex] = updatedChoices[currentQuestionIndex] || null;
+      return updatedChoices;
+    });
   };
-
+  
   const handlePreviousQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-    setSelectedChoice(null);
+    setSelectedChoices((prevChoices) => {
+      const updatedChoices = { ...prevChoices };
+      updatedChoices[currentQuestionIndex] = updatedChoices[currentQuestionIndex] || null;
+      return updatedChoices;
+    });
   };
 
   const handleBackButtonClick = () => {
@@ -56,6 +73,7 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'x-access-token': Cookies.get('access_token'),
         },
         body: JSON.stringify({
           result: calculateScore(questions, selectedChoices),
@@ -69,7 +87,7 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
       // Handle success, e.g., navigate to another page or show a success message
       console.log("Result submitted successfully!");
       // Example: navigate to the congratulations page
-      navigate(`/congratulations/${mockExamId}`);
+      //navigate(`/congratulations/${mockExamId}`);
     } catch (error) {
       console.error("Error submitting result", error);
       // Handle error, e.g., show an error message to the user
@@ -102,8 +120,9 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
     <div className="mock-exam-questions">
       {showCongratulations ? (
         <CongratulationsPage
-          score={calculateScore(questions, selectedChoices)}
-        />
+        score={calculateScore(questions, selectedChoices)}
+        onBackToMockExam={onBackButtonClick} // Pass the callback
+      />
       ) : (
         <div>
           <Timer
@@ -111,42 +130,37 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
             onTimeUpdate={(updatedTime) => setTimer(updatedTime)}
           />
 
-          <div className="question-card">
-            {questions.length > 0 && currentQuestionIndex < questions.length ? (
-              <div>
-                <h3 className="question">
-                  Question {currentQuestionIndex + 1}
-                </h3>
-                <p>{questions[currentQuestionIndex].text}</p>
-                <form className="choices">
-                  {questions[currentQuestionIndex].choices.map(
-                    (choice, index) => (
-                      <div key={index} className="choice">
-                        <input
-                          type="radio"
-                          id={`choice${index}`}
-                          name="choices"
-                          value={choice.choice_text}
-                          checked={
-                            selectedChoices[currentQuestionIndex] ===
-                            choice.choice_text
-                          }
-                          onChange={() =>
-                            handleChoiceChange(choice.choice_text)
-                          }
-                        />
-                        <label htmlFor={`choice${index}`}>
-                          {choice.choice_text}
-                        </label>
-                      </div>
-                    ),
-                  )}
-                </form>
-              </div>
-            ) : (
-              <p>No more questions. Test completed!</p>
-            )}
+<div className="mock-question-card">
+  {questions.length > 0 && currentQuestionIndex < questions.length ? (
+    <div>
+      <h3 className="question">
+        Question {currentQuestionIndex + 1}
+      </h3>
+      <p>{questions[currentQuestionIndex].text}</p>
+      <form className="choices">
+        {questions[currentQuestionIndex].choices.map((choice) => (
+          <div key={choice.choice_text} className="choice">
+            <input
+              type="radio"
+              id={`choice${choice.choice_text}`}
+              name="choices"
+              value={choice.choice_text}
+              checked={
+                selectedChoices[currentQuestionIndex] === choice.choice_text
+              }
+              onChange={() => handleChoiceChange(choice.choice_text)}
+            />
+            <label htmlFor={`choice${choice.choice_text}`}>
+              {choice.choice_text}
+            </label>
           </div>
+        ))}
+      </form>
+    </div>
+  ) : (
+    <p>No more questions. Test completed!</p>
+  )}
+</div>
 
           <div className="nav-buttons">
             {currentQuestionIndex > 0 && (

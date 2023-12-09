@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import CreatePracticeQuestion from './CreatePracticeQuestion';
 import EditPracticeQuestion from './EditPracticeQuestion';
 import UserSuggestedQuestion from './UserSuggestedQuestion';
+import Footer from './Footer'
+import TopNav from './TopNav'
 import './AdministrativePage.css';
 
 const AdministrativePage = () => {
@@ -10,6 +12,7 @@ const AdministrativePage = () => {
     const [showSuggestionModal, setShowSuggestionModal] = useState(false);
     return (
         <div className="admin-page">
+            <TopNav />
             <h1 className="page-title">Hi, Admin</h1>
             <div className="button-container">
                 <button className="admin-button" onClick={() => setShowCreateModal(true)}>Create a New Practice Question</button>
@@ -18,8 +21,8 @@ const AdministrativePage = () => {
             </div>
 
             {showCreateModal && (
-                <div className="modal">
-                    <div className="modal-content">
+                <div className="create-modal">
+                    <div className="create-modal-content">
                         <button className="close-button" onClick={() => setShowCreateModal(false)}>&times;</button>
                         <CreatePracticeQuestion onClose={() => setShowCreateModal(false)} />
                     </div>
@@ -27,9 +30,8 @@ const AdministrativePage = () => {
             )}
 
             {showEditModal && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <button className="close-button" onClick={() => setShowEditModal(false)}>&times;</button>
+                <div className="edit-modal">
+                    <div className="edit-modal-content">
                         <EditPracticeQuestion onClose={() => setShowEditModal(false)} />
                     </div>
                 </div>
@@ -43,6 +45,8 @@ const AdministrativePage = () => {
                     </div>
                 </div>
             )}
+
+            <Footer />
         </div>
     );
 };

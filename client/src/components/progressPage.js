@@ -3,7 +3,7 @@ import "./progressPage.css";
 import ProgressBar from "./progressBar.js";
 import Footer from "./Footer";
 import Cookies from "js-cookie";
-
+import TopNav from "./TopNav.js";
 const ProgressPage = () => {
   const [progressData, setProgressData] = useState(null);
   const [showDonePage, setShowDonePage] = useState(false);
@@ -12,6 +12,7 @@ const ProgressPage = () => {
     const fetchProgressData = async () => {
       try {
         const response = await fetch("/api/statistics", {
+          method: "GET",
           headers: {
             "x-access-token": Cookies.get("access_token"),
           },
@@ -41,38 +42,35 @@ const ProgressPage = () => {
   };
 
   return (
-    <div className="flex-container">
+    <div className="Progress-flex-container">
+      <TopNav/>
       {!showDonePage && progressData && (
         <>
           <div className="div1">
-            <div className="bubble" style={{ backgroundColor: "red" }}>
+            <div className="bubble1">
               Practice Question: {Math.round((progressData.practiceQuestionsProgress.completedPracticeQuestions / progressData.practiceQuestionsProgress.totalPracticeQuestions) * 100)}%
             </div>
             <ProgressBar stopValue={Math.round((progressData.practiceQuestionsProgress.completedPracticeQuestions / progressData.practiceQuestionsProgress.totalPracticeQuestions) * 100)} />
-            <button onClick={() => handleShowDonePage("practice")}>More</button>
           </div>
 
           <div className="div2">
-            {progressData.mockExamsTopResults.mockExamsTopResults.map((mockExamResult) => (
-              <div key={mockExamResult._id}>
-                <div className="bubble" style={{ backgroundColor: "#FFd700" }}>
-                  Mock Exam: {mockExamResult.top_result}%
-                </div>
-                <ProgressBar stopValue={mockExamResult.top_result} />
-                <button onClick={() => handleShowDonePage("mockExam")}>More</button>
-              </div>
-            ))}
+            {Array.isArray(progressData.mockExamsTopResults.mockExamsTopResults) &&
+              progressData.mockExamsTopResults.mockExamsTopResults
+                .slice()
+                .sort((a, b) => b.top_result - a.top_result) // Sort by top_result in descending order
+                .slice(0, 1) // Take only the first (highest) entry
+                .map((mockExamResult) => (
+                  <div key={mockExamResult._id}>
+                    <div className="bubble2">
+                      Mock Exam: {mockExamResult.mock_exam_id.name}<br></br> Top Result: {mockExamResult.top_result}%
+                    </div>
+                    <ProgressBar stopValue={mockExamResult.top_result} />
+                  </div>
+                ))}
           </div>
-
-          {/* Add similar logic for FlashCard as needed */}
         </>
       )}
-
-      {showDonePage && (
-        <div>
-          {/* Render your done pages based on the selected page */}
-        </div>
-      )}
+      <Footer />
     </div>
   );
 };

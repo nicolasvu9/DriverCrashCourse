@@ -2,30 +2,42 @@ import React, { useState, useEffect } from "react";
 import "./MockExamPage.css";
 import MockExamQuestions from "./MockExamQuestions.js";
 import Footer from "./Footer";
-
+import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+import TopNav from "./TopNav.js";
 const MockExamPage = () => {
   const [mockExams, setMockExams] = useState([]);
   const [selectedMockExamId, setSelectedMockExamId] = useState(null);
   const [showStartModal, setShowStartModal] = useState(false);
   const [showExamQuestions, setShowExamQuestions] = useState(false);
+  // Retrieve values from cookies
+  const accessToken = Cookies.get('access_token');
 
   useEffect(() => {
     const fetchMockExams = async () => {
       try {
-        const response = await fetch('/api/mockexams');
+        const response = await fetch('/api/mockexams', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': Cookies.get('access_token'),
+          },
+        });
+
         if (!response.ok) {
           throw new Error('Failed to fetch mock exams');
         }
-  
+
         const data = await response.json();
+        
         setMockExams(data);
       } catch (error) {
         console.error('Error fetching mock exams', error);
       }
     };
-  
+
     fetchMockExams();
-  }, []);
+  }, [accessToken]);
 
   const handleStartTest = (mockExamId) => {
     setSelectedMockExamId(mockExamId);
@@ -40,9 +52,13 @@ const MockExamPage = () => {
   const handleBackToMockExamPage = () => {
     setShowExamQuestions(false);
   };
-
+  
+  
+  
   return (
+    
     <div className="mock-exam-page">
+      <TopNav />
       {showExamQuestions ? (
         <MockExamQuestions
           mockExamId={selectedMockExamId}
@@ -50,20 +66,23 @@ const MockExamPage = () => {
         />
       ) : (
         <>
-          <h1 className="page-title">Mock Exam</h1>
+          <h1 className="mock-page-title">Mock Exam</h1>
           <table>
             <thead>
               <tr>
-                <th>Mock Exam ID</th>
+                <th>Mock Exam Name</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {mockExams.map((mockExam) => (
                 <tr key={mockExam._id}>
-                  <td>{mockExam._id}</td>
+                  <td>{mockExam.name}</td>
                   <td>
-                    <button onClick={() => handleStartTest(mockExam._id)}>
+                    <button
+                      className="mockbutton"
+                      onClick={() => handleStartTest(mockExam._id)}
+                    >
                       Start the test
                     </button>
                   </td>
@@ -73,10 +92,10 @@ const MockExamPage = () => {
           </table>
 
           {showStartModal && (
-            <div className="modal">
-              <div className="modal-content">
+            <div className="mock-modal">
+              <div className="mock-modal-content">
                 <button
-                  className="close-button"
+                  className="mock-close-button"
                   onClick={() => setShowStartModal(false)}
                 >
                   &times;
@@ -90,6 +109,7 @@ const MockExamPage = () => {
           )}
         </>
       )}
+      <Footer />
     </div>
   );
 };

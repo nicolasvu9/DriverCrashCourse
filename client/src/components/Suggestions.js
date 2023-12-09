@@ -3,7 +3,7 @@ import "./Suggestions.css";
 import Cookies from "js-cookie";
 import TopNav from "./TopNav";
 import Footer from "./Footer";
-
+import Road from "./road.png";
 function Suggestions() {
   const [questionText, setQuestionText] = useState("");
   const [choices, setChoices] = useState([
@@ -41,6 +41,14 @@ function Suggestions() {
       alert("Please fill in all fields before submitting.");
       return;
     }
+
+    // Check if the access token is available
+  const accessToken = Cookies.get("access_token");
+  if (!accessToken) {
+    alert("User not authenticated. Please log in.");
+    // You can redirect the user to the login page or handle the situation as needed
+    return;
+  }
   
     const payload = {
       text: questionText,
@@ -72,8 +80,10 @@ function Suggestions() {
   };
   
   return (
-    
-    <div className="modal">
+    <div>
+      <TopNav />
+      
+    <div className="--modal">
       
     <div className="create-question-form">
       <form onSubmit={handleSubmit}>
@@ -114,6 +124,9 @@ function Suggestions() {
       </form>
     </div>
     
+    </div>
+    
+    <Footer />
     </div>
   );
   

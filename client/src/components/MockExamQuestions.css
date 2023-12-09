@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.question-card {
+.mock-question-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +13,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 2vw;
+  background-color: #EBFBEE;
 }
 
 .choices {
@@ -28,7 +29,9 @@
 
   right: 10px;
 }
-.back-button {
+.back-button,
+.nav-button,
+.submit-button {
   background-image: linear-gradient(#f7f8fa, #e7e9ec);
   border-color: #adb1b8 #a2a6ac #8d9096;
   border-style: solid;
@@ -40,9 +43,9 @@
   cursor: pointer;
   display: inline-block;
   font-family: "Amazon Ember", Arial, sans-serif;
-
+  
   height: 29px;
-  font-size: 10px;
+  font-size: 15px; /* Updated font size */
   outline: 0;
   overflow: hidden;
   width: 70px;
@@ -55,6 +58,9 @@
   white-space: nowrap;
 }
 
+.back-button{
+  padding:4px;
+}
 .back-button:active {
   border-bottom-color: #a2a6ac;
 }
@@ -77,15 +83,15 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  widht: 100%;
+  
 }
 
 .nav-button,
 .submit-button {
   font-size: 15px;
-
+  width:70px;
   margin: 0 1vh;
-  background-color: white;
+  padding:4px;
   color: #333;
 }
 
@@ -118,7 +124,7 @@
   .back {
     position: fixed;
     top: 5px;
-    right: 10px;
+    left: 10px;
   }
 
   /* Add more specific styles for smaller screens if needed */

@@ -2,7 +2,10 @@ import React from "react";
 import "./footer.css";
 
 const Footer = () => {
-  return <div className="footer">©CopyRight</div>;
-};
+  return (
+  <footer>
+    &copy; {new Date().getFullYear()} Driver Crash Course
+  </footer>
+)};
 
 export default Footer;

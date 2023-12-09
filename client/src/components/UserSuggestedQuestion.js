@@ -69,7 +69,11 @@ const UserSuggestedQuestion = ({ onClose }) => {
     };
 
     return (
+        
+           
+        
         <div className="modal">
+            
             <div className="modal-content">
                 <button className="close-button" onClick={onClose}>&times;</button>
                 <div className="question-list">
@@ -100,7 +104,7 @@ const UserSuggestedQuestion = ({ onClose }) => {
 
                             <h3>Explanation:</h3>
                             <p>{selectedQuestion.correct_answer_explanation}</p>
-                            <div className="action-buttons">
+                            <div className="Suggest-action-buttons">
                                 <button onClick={() => approveQuestion(selectedQuestion._id)}>Approve</button>
                                 <button onClick={() => discardQuestion(selectedQuestion._id)}>Discard</button>
                             </div>
@@ -110,7 +114,10 @@ const UserSuggestedQuestion = ({ onClose }) => {
 
             </div>
         </div>
+        
+                                    
     );
+    
 };
 
 export default UserSuggestedQuestion;

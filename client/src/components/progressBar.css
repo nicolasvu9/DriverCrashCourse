@@ -2,26 +2,22 @@
 .progress {
   width: 33vh;
   height: 3vh;
-  background-color: #ccc;
+  
   position: relative;
-  margin-left: 6vh;
   border-radius: 1.5vh;
-  transition:
-    background-color 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 .bar {
   height: 100%;
   background: linear-gradient(
     90deg,
-    rgba(65, 158, 255, 1) 0%,
-    rgba(19, 194, 194, 1) 100%
+    hsla(186, 49%, 63%, 1) 0%,
+    hsla(183, 57%, 81%, 1) 45%,
+    hsla(63, 100%, 96%, 1) 96%
   );
-  transition:
-    width 0.5s,
-    box-shadow 0.3s ease-in-out;
+  transition: width 0.5s, box-shadow 0.3s ease-in-out;
   border-radius: 1.5vh;
 }
 
@@ -31,7 +27,21 @@
 }
 @media screen and (min-width: 900px) {
   .progress {
-    margin-left: 9vh;
-    width: 35vh;
+    margin-left: 32vh;
+    width: 44vh;
+  }
+}
+@media screen and (min-width:601px) and (max-width:899px){
+  .progress {
+    margin-left: 30vh;
+    width: 44vh;
+  }
+}
+
+/* Additional media query for smaller screens */
+@media screen and (max-width: 600px) {
+  .progress {
+    margin-left: 15vh;
+    width: 38vh;
   }
 }

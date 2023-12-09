@@ -52,14 +52,14 @@ const CreatePracticeQuestion = ({ onClose, question }) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            onClose(); // Close the modal after submission
+            onClose();
         } catch (error) {
             console.error('Error submitting question', error);
         }
     };
 
     return (
-        <div className="create-question-form">
+        <div className="create-question-form" >
             <form onSubmit={handleSubmit}>
                 <label>Question</label>
                 <textarea value={questionText} onChange={(e) => setQuestionText(e.target.value)} />
