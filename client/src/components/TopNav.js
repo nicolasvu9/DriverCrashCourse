@@ -1,28 +1,27 @@
 // components/TopNav.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { logout } from '../utils/auth'; // Import the logout function
+import { logout } from "../utils/auth"; // Import the logout function
 import "./TopNav.css";
 import logo from "./logo.png";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 const TopNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [userRole, setUserRole] = useState('');
+  const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
     const fetchUserRole = async () => {
       try {
         // Fetch user role from cookies or your authentication system
-        const role = Cookies.get('user_role');
+        const role = Cookies.get("user_role");
         setUserRole(role);
       } catch (error) {
-        console.error('Error fetching user role', error);
+        console.error("Error fetching user role", error);
       }
     };
 
     fetchUserRole();
   }, []);
-
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,7 +36,6 @@ const TopNav = () => {
         <div className="line"></div>
         <div className="line"></div>
         <div className="line"></div>
-        
       </div>
       <img src={logo} alt="Logo" className="user-logo" />
       <div className="topnavguide">
@@ -62,12 +60,12 @@ const TopNav = () => {
         <Link to="/Video" onClick={() => setIsMenuOpen(false)}>
           Resources
         </Link>
-        {userRole === 'admin' && (
+        {userRole === "admin" && (
           <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
             Admin
           </Link>
         )}
-        <Link to="/logout" onClick={handleLogout}>
+        <Link to="/" onClick={handleLogout}>
           LogOut
         </Link>
       </div>
