@@ -4,7 +4,7 @@ body {
 }
 
 /* Hamburger menu container */
-.topnav {
+.user-topnav {
   display: flex;
   height: 7vh;
   width: 100%;
@@ -13,10 +13,11 @@ body {
   background-color: #3f6a6f;
   color: black;
   justify-content: space-between;
+  margin:0;
 }
 
 /* Hamburger menu icon */
-.icon {
+.user-icon {
   display: none;
   flex-direction: column;
   cursor: pointer;
@@ -64,46 +65,42 @@ body {
 }
 
 /* Responsive styles */
-@media screen and (max-width: 600px) {
+/* Responsive styles */
+@media screen and (max-width: 768px) {
   .topnavguide {
     display: none;
   }
 
   /* Show hamburger menu icon on smaller screens */
-  .icon {
+  .user-icon {
     display: flex;
     margin-left: 1vh;
     margin-top: 1vh;
   }
 
   /* Show TopNav menu when hamburger menu is open */
-  .topnav.open .topnavguide {
+  .user-topnav.open .topnavguide {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 50px;
+    top: 7vh; /* Set it to match the height of .user-topnav */
     left: 0;
     right: 0;
     background-color: #3f6a6f;
-    z-index: 2;
+    z-index: 3;
   }
 
   /* Hamburger menu icon styles when open */
-  .icon.open .line:nth-child(1) {
+  .user-icon.open .line:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
   }
 
-  .icon.open .line:nth-child(2) {
+  .user-icon.open .line:nth-child(2) {
     opacity: 0;
   }
 
-  .icon.open .line:nth-child(3) {
+  .user-icon.open .line:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
   }
-}
-
-.logo {
-  height: 100%;
-  margin-right: 10px; /* Adjust margin as needed */
 }

@@ -17,6 +17,7 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
+    
     <div className="login-form">
       <form onSubmit={handleLoginSubmit}>
         <h2>Login</h2>
@@ -150,7 +151,9 @@ const LoginPage = () => {
 
   return (
     <div>
-      
+      <header className="login-header">
+        <img src={logo} alt="Logo" className="login-logo" />
+      </header>
       <div className="forms-container">
         <LoginForm onLogin={handleLogin} />
         <div className="vertical-line"></div>

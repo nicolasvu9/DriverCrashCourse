@@ -15,7 +15,7 @@ import AdministrativePage from './components/AdministrativePage';
 const App = () => {
   return (
     <Router>
-      <TopNav />
+      
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/DashBoard" element={<DashBoard />} />
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/LogOut" element={<LandingPage/>} />
       </Routes>
 
-      <Footer />
+      
     </Router>
   );
 };
