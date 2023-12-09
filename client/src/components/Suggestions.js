@@ -72,6 +72,18 @@ function Suggestions() {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
+      
+      alert("Successfully submitted!");
+
+    // Clear form content
+    setQuestionText("");
+    setChoices([
+      { choice_text: "", isCorrect: false },
+      { choice_text: "", isCorrect: false },
+      { choice_text: "", isCorrect: false },
+      { choice_text: "", isCorrect: false },
+    ]);
+    setExplanation("");
       onClose();
       setShowPopup(true);
     } catch (error) {
