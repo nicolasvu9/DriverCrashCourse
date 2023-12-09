@@ -1,13 +1,19 @@
-  header {
-    text-align: left;
-    padding: 0 20px;
-    background-color: #3F6A6F;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    color: white;
-  } 
-  
+/* Add this to your LoginPage.css file */
+.login-logo {
+  width: 50px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Add any additional styles for the header if necessary */
+.login-header {
+  text-align: left;
+  padding: 0 20px;
+  background-color: #3f6a6f;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
   .login-footer {
     text-align: center;
     height: 40px;

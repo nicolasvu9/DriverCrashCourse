@@ -1,31 +1,31 @@
 .mock-exam-page {
   font-family: "Arial", sans-serif;
-  height: 85vh;
+  height: 94vh;
   color: #2b4a4f;
   text-align: center;
   background-color: #e3eee4;
 }
 
-.page-title {
+.mock-exam-page .mock-page-title {
   font-size: 20px;
   margin-bottom: 2vh;
 }
 
-table {
+.mock-exam-page table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2vh;
   background-color: white;
 }
 
-th,
-td {
+.mock-exam-page th,
+.mock-exam-page td {
   border: 1px solid #ddd;
   padding: 1vh;
   text-align: center;
 }
 
-th {
+.mock-exam-page th {
   background-color: #f2f2f2;
 }
 
@@ -41,11 +41,11 @@ th {
   border-radius: 5px;
 }
 
-button:hover {
+.mock-exam-page button:hover {
   background-color: #e1ad01;
 }
 
-.modal {
+.mock-modal {
   display: flex;
   position: fixed;
   top: 50%;
@@ -59,27 +59,31 @@ button:hover {
   padding: 20px; 
 }
 
-.modal-content {
+.mock-modal-content {
   padding: 1vh;
   border-radius: 1vh;
   position: relative;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-.close-button {
+.mock-close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 0px;
   font-size: 20px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   color: #333;
+  width:40px;
 }
 
-.close-button:hover {
+.mock-close-button :hover {
   color: #000;
+  background-color: #888;
+  
 }
 
 /* Additional styles for StartTestContent */

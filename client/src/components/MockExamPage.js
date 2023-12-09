@@ -4,7 +4,7 @@ import MockExamQuestions from "./MockExamQuestions.js";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
-
+import TopNav from "./TopNav.js";
 const MockExamPage = () => {
   const [mockExams, setMockExams] = useState([]);
   const [selectedMockExamId, setSelectedMockExamId] = useState(null);
@@ -52,9 +52,13 @@ const MockExamPage = () => {
   const handleBackToMockExamPage = () => {
     setShowExamQuestions(false);
   };
-
+  
+  
+  
   return (
+    
     <div className="mock-exam-page">
+      <TopNav />
       {showExamQuestions ? (
         <MockExamQuestions
           mockExamId={selectedMockExamId}
@@ -62,7 +66,7 @@ const MockExamPage = () => {
         />
       ) : (
         <>
-          <h1 className="page-title">Mock Exam</h1>
+          <h1 className="mock-page-title">Mock Exam</h1>
           <table>
             <thead>
               <tr>
@@ -88,10 +92,10 @@ const MockExamPage = () => {
           </table>
 
           {showStartModal && (
-            <div className="modal">
-              <div className="modal-content">
+            <div className="mock-modal">
+              <div className="mock-modal-content">
                 <button
-                  className="close-button"
+                  className="mock-close-button"
                   onClick={() => setShowStartModal(false)}
                 >
                   &times;
@@ -105,6 +109,7 @@ const MockExamPage = () => {
           )}
         </>
       )}
+      <Footer />
     </div>
   );
 };

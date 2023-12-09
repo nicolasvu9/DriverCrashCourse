@@ -6,7 +6,7 @@ import DriverLicence from "./DriverLicence.jpg";
 import Car from "./Car.jpg";
 import Appointment from "./Appointment.jpg";
 import RoadSafety from "./RoadSafety.jpg";
-
+import TopNav from "./TopNav";
 const Video = () => {
   const externalLink =
   "https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/driving.html";
@@ -17,7 +17,11 @@ const Video = () => {
     "https://saaq.gouv.qc.ca/en/road-safety/client-groups/young-drivers";
 
   return (
+    
+      
+    
     <div className="Resources">
+    <TopNav />
       <h2>What You Need to Know Before A Driver</h2>
       <div className="row">
         <div className="image-container">
@@ -98,6 +102,7 @@ const Video = () => {
        
 
       </div>
+      
       <Footer />
     </div>
   );

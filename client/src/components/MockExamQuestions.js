@@ -130,7 +130,7 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
             onTimeUpdate={(updatedTime) => setTimer(updatedTime)}
           />
 
-<div className="question-card">
+<div className="mock-question-card">
   {questions.length > 0 && currentQuestionIndex < questions.length ? (
     <div>
       <h3 className="question">

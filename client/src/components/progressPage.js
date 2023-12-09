@@ -3,7 +3,7 @@ import "./progressPage.css";
 import ProgressBar from "./progressBar.js";
 import Footer from "./Footer";
 import Cookies from "js-cookie";
-
+import TopNav from "./TopNav.js";
 const ProgressPage = () => {
   const [progressData, setProgressData] = useState(null);
   const [showDonePage, setShowDonePage] = useState(false);
@@ -42,7 +42,8 @@ const ProgressPage = () => {
   };
 
   return (
-    <div className="flex-container">
+    <div className="Progress-flex-container">
+      <TopNav/>
       {!showDonePage && progressData && (
         <>
           <div className="div1">
@@ -61,7 +62,7 @@ const ProgressPage = () => {
                 .map((mockExamResult) => (
                   <div key={mockExamResult._id}>
                     <div className="bubble2">
-                      Mock Exam: {mockExamResult.mock_exam_id.name}, Top Result: {mockExamResult.top_result}%
+                      Mock Exam: {mockExamResult.mock_exam_id.name}<br></br> Top Result: {mockExamResult.top_result}%
                     </div>
                     <ProgressBar stopValue={mockExamResult.top_result} />
                   </div>
@@ -69,6 +70,7 @@ const ProgressPage = () => {
           </div>
         </>
       )}
+      <Footer />
     </div>
   );
 };
