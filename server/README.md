@@ -466,3 +466,53 @@ This deletes the suggested question and adds it to the practice questions. Can b
   }
 }
 ```
+# Flashcards
+
+## Get all flashcards
+
+### Request
+
+`GET /api/flashcards`
+
+### Response
+```json
+[{
+  "_id": "1",
+  "text": "flashcard1",
+  "answer": "answer1"
+},
+// ... more flashcards
+]
+```
+
+## Create a new flashcard
+
+### Request
+
+`POST /api/flashcards`
+json object as payload
+
+```json
+{
+  "text": "flashcard1",
+  "answer": "answer1"
+}
+```
+
+### Response
+```json
+{
+  "_id": "1",
+  "text": "flashcard1",
+  "answer": "answer1"
+}
+```
+## Delete flashcard by ID
+
+### Request
+
+`DELETE /api/flashcards/<ID OF FLASHCARD YOU WANT TO DELETE>`
+
+### Response
+
+Returns deleted flashcard object
