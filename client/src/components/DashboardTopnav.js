@@ -38,7 +38,7 @@ const TopNav = () => {
         <Link to="/video" onClick={() => setIsMenuOpen(false)}>
           Video
         </Link>
-        <Link to="/logout" onClick={() => setIsMenuOpen(false)}>
+        <Link to="/" onClick={() => setIsMenuOpen(false)}>
           LogOut
         </Link>
       </div>
