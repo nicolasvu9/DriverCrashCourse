@@ -15,7 +15,7 @@ import AdministrativePage from './components/AdministrativePage';
 const App = () => {
   return (
     <Router>
-      <TopNav />
+     
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/DashBoard" element={<DashBoard />} />
@@ -25,12 +25,12 @@ const App = () => {
         {/*<Route path="/FlashCard" element={< />} />*/}
         <Route path="/Progress" element={<ProgressPage />} />
         <Route path="/Suggestion" element={<SuggestionPage />} />
-          {/*Its called Resources Page now but the link still works. If it doesnt work Ill fix it but keep it for now.*/}
+          
         <Route path="/Video" element={<Video />} /> 
         <Route path="/LogOut" element={<LandingPage/>} />
       </Routes>
 
-      <Footer />
+
     </Router>
   );
 };
