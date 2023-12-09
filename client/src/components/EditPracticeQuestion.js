@@ -87,12 +87,11 @@ const EditPracticeQuestion = ({ onClose }) => {
             {editingQuestion && (
                 <div className="edit-modal">
                     <div className="edit-modal-content">
+                    <button className="close-button" onClick={closeEditModal}>&times;</button>
                         <CreatePracticeQuestion
                             question={editingQuestion}
                             onClose={closeEditModal}
                         />
-                        <button className="close-button" onClick={closeEditModal}>&times;</button>
-
                     </div>
                 </div>
             )}

@@ -59,7 +59,7 @@ const CreatePracticeQuestion = ({ onClose, question }) => {
     };
 
     return (
-        <div className="create-question-form" >
+        <div className="create-question-form">
             <form onSubmit={handleSubmit}>
                 <label>Question</label>
                 <textarea value={questionText} onChange={(e) => setQuestionText(e.target.value)} />
