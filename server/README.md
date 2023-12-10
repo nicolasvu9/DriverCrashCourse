@@ -19,7 +19,7 @@ Encrypt
 `gpg -c config.env`
 
 Decrypt
-`gpg -d ./config.env.gpg`
+`gpg -d -o config.env config.env.gpg`
 
 Run server
 `npm run dev`
