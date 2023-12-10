@@ -22,7 +22,7 @@ const Video = () => {
     
     <div className="Resources">
     <TopNav />
-      <h2>What You Need to Know Before A Driver</h2>
+      <h2>What You Need to Know Before Driving</h2>
       <div className="row">
         <div className="image-container">
           <img
