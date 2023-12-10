@@ -1,0 +1,58 @@
+/* PracticeProblemPage.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    min-width: 650px;
+}
+
+.page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.problem-container {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.choices-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.choice-item {
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.choice-item:hover {
+    background-color: #f2f2f2;
+}
+
+.choice-item.selected {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.feedback-message {
+    margin-top: 20px;
+    text-align: center;
+    color: green;
+}
