@@ -1,0 +1,55 @@
+/* FlashCardsPage.css */
+
+.flashcards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-width: 650px;
+  }
+  
+  .flashcard {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    position: relative;
+  }
+  
+  .front,
+  .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .back {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard.flipped .front {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard.flipped .back {
+    transform: rotateY(360deg);
+  }
+  
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .flashcard {
+      width: 250px;
+      height: 150px;
+    }
+  }
+  
