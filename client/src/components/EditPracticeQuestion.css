@@ -21,6 +21,7 @@
     max-height: 50vh;
     overflow-y: auto;
     z-index: 1001;
+    overflow-x: auto;
 }
 
 .edit-modal {
