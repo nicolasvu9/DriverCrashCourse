@@ -88,7 +88,7 @@ const UserSuggestedQuestion = ({ onClose }) => {
                     <div className="view-modal">
                         <div className="view-modal-content">
                             <button className="close-button" onClick={() => setSelectedQuestion(null)}>&times;</button>
-                            <h3>{selectedQuestion.text}</h3>
+                            <h5>{selectedQuestion.text}</h5>
                             <ul className="choice-list">
                                 {selectedQuestion.choices.map((choice, index) => (
                                     <li key={index} className={choice.isCorrect ? 'choice-item correct' : 'choice-item'}>
@@ -98,7 +98,7 @@ const UserSuggestedQuestion = ({ onClose }) => {
                                 ))}
                             </ul>
 
-                            <h3>Explanation:</h3>
+                            <h4>Explanation:</h4>
                             <p>{selectedQuestion.correct_answer_explanation}</p>
                             <div className="action-buttons">
                                 <button onClick={() => approveQuestion(selectedQuestion._id)}>Approve</button>
