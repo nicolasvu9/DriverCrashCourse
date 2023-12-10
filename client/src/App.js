@@ -11,6 +11,7 @@ import DashBoard from "./components/DashboardPage.js";
 import LandingPage from "./components/LandingPage.js";
 import AdministrativePage from "./components/AdministrativePage";
 import PracticeProblemPage from "./components/PracticeProblemPage.js";
+import FlashCardsPage from "./components/FlashCardsPage.js";
 const App = () => {
   return (
     <Router>
@@ -24,7 +25,7 @@ const App = () => {
         />
         {/*<Route path="/Practice" element={< />} />*/}
         <Route path="/exam" element={<MockExamPage />} />
-        <Route path="/FlashCard" element={<FlashcardsPage />} />
+        <Route path="/FlashCard" element={<FlashCardsPage />} />
         <Route path="/Progress" element={<ProgressPage />} />
         <Route path="/Suggestion" element={<SuggestionPage />} />
         <Route path="/practice" element={<PracticeProblemPage />} />
