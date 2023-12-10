@@ -7,9 +7,10 @@ import FlashcardsPage from "./components/FlashcardPage.js";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Video from "./components/Video";
 import LoginPage from "./components/LoginPage.js";
-import DashBoard from "./components/Dashboard.js";
+import DashBoard from "./components/DashboardPage.js";
 import LandingPage from "./components/LandingPage.js";
 import AdministrativePage from "./components/AdministrativePage";
+import PracticeProblemPage from "./components/PracticeProblemPage.js";
 const App = () => {
   return (
     <Router>
@@ -26,8 +27,10 @@ const App = () => {
         <Route path="/FlashCard" element={<FlashcardsPage />} />
         <Route path="/Progress" element={<ProgressPage />} />
         <Route path="/Suggestion" element={<SuggestionPage />} />
+        <Route path="/practice" element={<PracticeProblemPage />} />
         {/*Its called Resources Page now but the link still works. If it doesnt work Ill fix it but keep it for now.*/}
         <Route path="/Video" element={<Video />} />
+
       </Routes>
     </Router>
   );
