@@ -64,6 +64,7 @@ export async function deletePracticeQuestion(id) {
   try {
     const deletedPracticeQuestion =
       await practiceQuestion.findByIdAndDelete(id);
+    await questionProgression.deleteMany({ question_id: id });
     return deletedPracticeQuestion;
   } catch (err) {
     console.error("error adding new practice question", err);
@@ -78,6 +79,12 @@ export async function setUserQuestionProgress(req) {
       user_id: req.userId,
       question_id,
     };
+
+    const existingProgression = await questionProgression.findOne(data);
+    if (existingProgression) {
+      return existingProgression;
+    }
+
     const newQuestionProgression = new questionProgression(data);
     const savedQuestionProgression = await newQuestionProgression.save();
     return savedQuestionProgression;
