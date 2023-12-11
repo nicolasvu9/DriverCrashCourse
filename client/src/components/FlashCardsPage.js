@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import './FlashCardsPage.css'; // Create a CSS file for styling
+import Cookies from 'js-cookie';
+import './FlashCardsPage.css'; 
 import TopNav from './TopNav';
+import Footer from './Footer';
 
 const FlashCardsPage = () => {
   const [flashcards, setFlashcards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const shuffleArray = (array) => {
+    // Use the Fisher-Yates algorithm to shuffle the array in-place
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+};
+
   const fetchFlashcards = async () => {
     try {
-      const response = await fetch('/api/flashcards'); // Replace with your actual endpoint
+      const response = await fetch('/api/flashcards', {
+        headers: {
+            'x-access-token': Cookies.get('access_token'),
+        },
+      });
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
       const data = await response.json();
+      shuffleArray(data); //shuffles
       setFlashcards(data);
     } catch (error) {
       console.error('Error fetching flashcards', error);
@@ -58,6 +73,7 @@ const FlashCardsPage = () => {
         <button onClick={handlePrevCard}>Previous</button>
         <button onClick={handleNextCard}>Next</button>
       </div>
+        <Footer />
     </div>
   );
 };

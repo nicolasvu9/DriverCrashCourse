@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import './PracticeProblemPage.css';
 import TopNav from './TopNav';
+import Footer from './Footer';
 
 const PracticeProblemPage = () => {
     const [questions, setQuestions] = useState([]);
@@ -10,7 +11,6 @@ const PracticeProblemPage = () => {
     const [isCorrect, setIsCorrect] = useState(null);
 
     const shuffleArray = (array) => {
-        // Use the Fisher-Yates algorithm to shuffle the array in-place
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -113,7 +113,7 @@ const PracticeProblemPage = () => {
         if (isCorrect !== null && isCorrect && currentQuestion.correct_answer_explanation) {
             return (
                 <div className="explanation-container">
-                    <h3>Explanation:</h3>
+                    <h2>Explanation:</h2>
                     <p>{currentQuestion.correct_answer_explanation}</p>
                 </div>
             );
@@ -127,7 +127,7 @@ const PracticeProblemPage = () => {
         <div className="container">
             <TopNav/>
 
-            <h2 className="page-title">Practice Problem Page</h2>
+            <h2 className="page-title">Practice Problems</h2>
             
             <div className="problem-container">
                 <p>{currentQuestion.text}</p>
@@ -161,11 +161,12 @@ const PracticeProblemPage = () => {
                 </div>
                 {isCorrect !== null && (
                     <p className="feedback-message">
-                        {isCorrect ? 'Correct!' : 'Incorrect. Try again.'}
+                        {isCorrect ? 'Correct!' : <p style = {{ color: "#B80606" }}>'Incorrect. Try again.'</p>}
                     </p>
                 )}
                 {renderExplanation()}
             </div>
+            <Footer />
         </div>
     );
 };
