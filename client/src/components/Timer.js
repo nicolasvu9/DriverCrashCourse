@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./Timer.css";
 
-const Timer = ({ initialTime, onTimeUpdate }) => {
+const Timer = ({ initialTime }) => {
   const [time, setTime] = useState(initialTime);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-      onTimeUpdate(time);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [time, onTimeUpdate]);
+  }, []); // Remove onTimeUpdate from the dependency array
 
   const calculatePercentage = () => {
     return ((time / initialTime) * 100).toFixed(2);
@@ -21,7 +20,7 @@ const Timer = ({ initialTime, onTimeUpdate }) => {
     #F3F497 ${calculatePercentage()}%,/* green */
     #FFC93D 0%, /* red */
     #000000 100%                 /* Black */
-)`;
+  )`;
 
   return (
     <div className="timer-container">

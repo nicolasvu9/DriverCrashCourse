@@ -139,8 +139,7 @@
   .nav-buttons {
     margin-top: 1px;
   }
-  .back-button {
-  }
+  
 
   /* Add more specific styles for smaller screens if needed */
 }
@@ -155,8 +154,7 @@
     margin-top: 1px;
     margin-bottom: 2px; /* Adjust this value as needed to prevent getting too close to the footer */
   }
-  .back-button {
-  }
+  
 }
 
 @media screen and (min-width: 800px) {
@@ -171,6 +169,5 @@
   .nav-buttons {
     margin-top: 1vh;
   }
-  .back-button {
-  }
+  
 }

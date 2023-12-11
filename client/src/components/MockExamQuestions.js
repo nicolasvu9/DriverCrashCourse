@@ -69,6 +69,7 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
 
   const submitResult = async () => {
     try {
+      
       const response = await fetch(`/api/mockexams/results/${mockExamId}`, {
         method: "POST",
         headers: {
