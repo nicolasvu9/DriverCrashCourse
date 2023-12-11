@@ -50,25 +50,26 @@ const handleTimeUp = () => {
   setShowCongratulations(true);
 };
 
-  const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) =>
-      prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex
-    );
-    setSelectedChoices((prevChoices) => {
-      const updatedChoices = { ...prevChoices };
-      updatedChoices[currentQuestionIndex] = updatedChoices[currentQuestionIndex] || null;
-      return updatedChoices;
-    });
-  };
-  
-  const handlePreviousQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-    setSelectedChoices((prevChoices) => {
-      const updatedChoices = { ...prevChoices };
-      updatedChoices[currentQuestionIndex] = updatedChoices[currentQuestionIndex] || null;
-      return updatedChoices;
-    });
-  };
+const handleNextQuestion = () => {
+  setCurrentQuestionIndex((prevIndex) =>
+    prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex
+  );
+  setSelectedChoices((prevChoices) => {
+    const updatedChoices = { ...prevChoices };
+    updatedChoices[currentQuestionIndex + 1] = updatedChoices[currentQuestionIndex + 1] || null;
+    return updatedChoices;
+  });
+};
+
+const handlePreviousQuestion = () => {
+  setCurrentQuestionIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+  setSelectedChoices((prevChoices) => {
+    const updatedChoices = { ...prevChoices };
+    updatedChoices[currentQuestionIndex - 1] = updatedChoices[currentQuestionIndex - 1] || null;
+    return updatedChoices;
+  });
+};
+
 
   const handleBackButtonClick = () => {
     onBackButtonClick(); // Call the provided callback to go back to MockExamPage
