@@ -28,7 +28,7 @@
 
 }
 
-.create-question-form .choice-item {
+.create-question-form .create-choice-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,7 +37,7 @@
     height: 80%;
 }
 
-.create-question-form .choice-item label {
+.create-question-form .create-choice-item label {
     flex-basis: 20%;
     text-align: left;
     display: center;
@@ -141,12 +141,12 @@ button {
 }
 
 @media (max-width: 768px) {
-    .create-question-form .choice-item {
+    .create-question-form .create-choice-item {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .create-question-form .choice-item label {
+    .create-question-form .create-choice-item label {
         flex-basis: auto;
         text-align: left;
         margin-bottom: 5px;

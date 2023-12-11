@@ -13,7 +13,7 @@
     margin-bottom: 20px;
 }
 
-.problem-container {
+.practice-problem-container {
     width: 100%;
     max-width: 600px;
     border: 1px solid #edf1e4;
@@ -23,30 +23,31 @@
     box-sizing: border-box;
 }
 
-.choices-list {
+.practice-choices-list {
     list-style-type: none;
     padding: 0;
 }
 
-.choice-item {
+.practice-choice-item {
     cursor: pointer;
     padding: 10px;
     margin: 10px 0;
     border: 2px solid #edf1e4;
     border-radius: 4px;
+    background-color: #e3eee4;
     transition: background-color 0.3s ease;
 }
 
-.choice-item:hover {
+.practice-choice-item:hover {
     background-color: #b5e3f0;
 }
 
-.choice-item.selected {
+.practice-choice-item.selected {
     background-color: #6EB0A8;
     color: #fff;
 }
 
-.button-container {
+.practice-button-container {
     display: flex;
     justify-content: center;
     align-items: center;

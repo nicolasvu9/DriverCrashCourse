@@ -106,7 +106,7 @@ function Suggestions() {
         />
 
         {choices.map((choice, index) => (
-          <div key={index} className="choice-item">
+          <div key={index} className="suggest-choice-item">
             <label>Choice {index + 1}</label>
             <input
               type="text"

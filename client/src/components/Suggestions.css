@@ -26,7 +26,7 @@
 
 }
 
-.create-question-form .choice-item {
+.create-question-form .suggest-choice-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@
   height: 80%;
 }
 
-.create-question-form .choice-item label {
+.create-question-form .suggest-choice-item label {
   flex-basis: 20%;
   text-align: left;
   display: center;

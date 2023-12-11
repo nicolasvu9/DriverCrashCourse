@@ -129,14 +129,14 @@ const PracticeProblemPage = () => {
 
             <h2 className="page-title">Practice Problems</h2>
             
-            <div className="problem-container">
+            <div className="practice-problem-container">
                 <p>{currentQuestion.text}</p>
-                <ul className="choices-list">
+                <ul className="practice-choices-list">
                     {currentQuestion.choices.map((choice, index) => (
                         <li
                             key={index}
                             onClick={() => handleSelectChoice(choice)}
-                            className={`choice-item ${
+                            className={`practice-choice-item ${
                                 selectedChoice === choice ? 'selected' : ''
                             }`}
                         >
@@ -144,7 +144,7 @@ const PracticeProblemPage = () => {
                         </li>
                     ))}
                 </ul>
-                <div className="button-container">
+                <div className="practice-button-container">
                     <button
                         onClick={handlePreviousQuestion}
                         disabled={currentQuestionIndex === 0}

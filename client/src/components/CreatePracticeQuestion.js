@@ -65,7 +65,7 @@ const CreatePracticeQuestion = ({ onClose, question }) => {
                 <textarea value={questionText} onChange={(e) => setQuestionText(e.target.value)} />
 
                 {choices.map((choice, index) => (
-                    <div key={index} className="choice-item">
+                    <div key={index} className="create-choice-item">
                         <label>Choice {index + 1}</label>
                         <input
                             type="text"
