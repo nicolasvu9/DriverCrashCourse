@@ -14,7 +14,7 @@ const AdministrativePage = () => {
         <div className="admin-page">
             <TopNav />
             <h1 className="page-title">Hi, Admin</h1>
-            <div className="button-container">
+            <div className="admin-button-container">
                 <button className="admin-button" onClick={() => setShowCreateModal(true)}>Create a New Practice Question</button>
                 <button className="admin-button" onClick={() => setShowEditModal(true)}>Edit Practice Questions</button>
                 <button className="admin-button" onClick={() => setShowSuggestionModal(true)}>User Suggested Questions</button>
