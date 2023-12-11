@@ -22,7 +22,6 @@ const App = () => {
           path="/admin"
           element={<ProtectedRoute element={<AdministrativePage />} />}
         />
-        {/*<Route path="/Practice" element={< />} />*/}
         <Route path="/exam" element={<MockExamPage />} />
         <Route path="/flashcard" element={<FlashCardsPage />} />
         <Route path="/progress" element={<ProgressPage />} />
