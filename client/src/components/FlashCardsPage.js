@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import './FlashCardsPage.css'; 
 import TopNav from './TopNav';
+import Footer from './Footer';
 
 const FlashCardsPage = () => {
   const [flashcards, setFlashcards] = useState([]);
@@ -72,6 +73,7 @@ const FlashCardsPage = () => {
         <button onClick={handlePrevCard}>Previous</button>
         <button onClick={handleNextCard}>Next</button>
       </div>
+        <Footer />
     </div>
   );
 };
