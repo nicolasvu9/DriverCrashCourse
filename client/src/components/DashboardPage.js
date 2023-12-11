@@ -16,7 +16,6 @@ const DashboardPage = () => {
         </div>
         <div className="dashboard-grid">
             <div>
-          {/* Use Link instead of 'a' */}
                 <Link to="/practice" className="dashboard-link">
                   <DashboardCard
                        title="Practice Problems"
