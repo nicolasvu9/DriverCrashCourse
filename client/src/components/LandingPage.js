@@ -3,6 +3,7 @@ import "./LandingPage.css";
 import logo from './logo.png';
 import Footer from './LandingFooter'
 import TopNav from './LandingTopNav'
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
     return (
@@ -29,8 +30,7 @@ const LandingPage = () => {
                 Exams, Practice Questions, and Videos are just a few of the things
                 we offer!
                 </p>
-                <a
-                href="./login"
+                <Link to = "/login"
                 class="greenbutton"
                 >
                 {" "}
@@ -38,7 +38,7 @@ const LandingPage = () => {
                     {" "}
                     <b> Signup! </b>{" "}
                 </font>
-                </a>
+                </Link>
                 </div>
             </div>
 
