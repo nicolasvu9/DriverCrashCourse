@@ -1,0 +1,859 @@
+{
+	"info": {
+		"_postman_id": "7a81b3fa-60d7-4194-bc15-59c097a3b0a1",
+		"name": "API_POSTMAN_REQUESTS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"nicolas2\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/auth/signin",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/auth/signup",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							],
+							"query": [
+								{
+									"key": "admin",
+									"value": "admin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PracticeQuestions",
+			"item": [
+				{
+					"name": "Get Practice Questions Admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions/admin",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Practice Questions User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions"
+							],
+							"query": [
+								{
+									"key": "x-access-token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mock Exam Questions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun?\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions/",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Practice Question as completed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NTI0ZGZmMDA0N2RiYmI0YjVkMSIsImlhdCI6MTcwMTIxNTcxNH0.C9jBTgWnvhQIxnZ3Odp4vtMHQ9ONV9-CUHyf791JyK0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions/656a685023d9baf94627fe16/completed",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions",
+								"656a685023d9baf94627fe16",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify practice question",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun?\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions/65669d513441e42e4ffef3c3",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions",
+								"65669d513441e42e4ffef3c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete practice question",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun 2?\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions/656c03953e788077eee8a131",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions",
+								"656c03953e788077eee8a131"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SuggestedQuestions",
+			"item": [
+				{
+					"name": "Get Suggested Questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/suggestedquestions/",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"suggestedquestions",
+								""
+							],
+							"query": [
+								{
+									"key": "x-access-token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add suggested Question",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun?\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions/",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify suggested question",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun? (suggested and modified)\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/suggestedquestions/6566a2e29bbdbb665fd11965",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"suggestedquestions",
+								"6566a2e29bbdbb665fd11965"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Suggested question",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun 2?\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/practicequestions/65669d513441e42e4ffef3c3",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"practicequestions",
+								"65669d513441e42e4ffef3c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Suggested question Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun (approved suggested)?\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/suggestedquestions/6566a1bc3441e42e4ffef41b/approve",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"suggestedquestions",
+								"6566a1bc3441e42e4ffef41b",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MockExams",
+			"item": [
+				{
+					"name": "Get all mock exams",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add mock exams",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Mock Exam 4\",\r\n        \"description\": \"This is the fourth mock exam.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify mock exam",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Sample Mock Exam 3 (modified)\",\r\n        \"description\": \"This is a sample description for the mock exam.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams/6566a0523441e42e4ffef411",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams",
+								"6566a0523441e42e4ffef411"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete mock exam",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Sample Mock Exam 3 (modified)\",\r\n        \"description\": \"This is a sample description for the mock exam.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams/6566a0523441e42e4ffef411",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams",
+								"6566a0523441e42e4ffef411"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Result for Mock Exam",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"result\": 96\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams/results/6566a0523441e42e4ffef411",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams",
+								"results",
+								"6566a0523441e42e4ffef411"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MockExamQuestions",
+			"item": [
+				{
+					"name": "Get Mock Exam Questions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun?\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams/questions/6575505e8145f1095a32f374",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams",
+								"questions",
+								"6575505e8145f1095a32f374"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Mock Exam Question",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"mock_exam_id\": \"657550718145f1095a32f377\",\r\n        \"text\": \"What is the maximum allowable blood alcohol concentration for drivers aged 21 and under in Quebec?\",\r\n        \"choices\": [\r\n            {\r\n                \"choice_text\": \"0.00%\",\r\n                \"isCorrect\": true\r\n            },\r\n            {\r\n                \"choice_text\": \"0.02%\",\r\n                \"isCorrect\": false\r\n            },\r\n            {\r\n                \"choice_text\": \"0.05%\",\r\n                \"isCorrect\": false\r\n            },\r\n            {\r\n                \"choice_text\": \"None of the above\",\r\n                \"isCorrect\": false\r\n            }\r\n        ],\r\n        \"correct_answer_explanation\": \"The maximum allowable blood alcohol concentration for drivers aged 21 and under in Quebec is 0.\",\r\n        \"__v\": 0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams/questions",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Mock Exam Question",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun 2?\",\r\n  \"mock_exam_id\": \"65668a606140fa0fa188ab2b\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams/questions/65669f3e3441e42e4ffef3f9",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams",
+								"questions",
+								"65669f3e3441e42e4ffef3f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mock Exam Question",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Are you having fun 2?\",\r\n  \"mock_exam_id\": \"65668a606140fa0fa188ab2b\",\r\n  \"choices\": [\r\n    { \"choice_text\": \"Yes\", \"isCorrect\": true },\r\n    { \"choice_text\": \"No\", \"isCorrect\": false },\r\n    { \"choice_text\": \"All of the above\", \"isCorrect\": false }\r\n  ],\r\n  \"correct_answer_explanation\": \"You're having fun\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/mockexams/questions/65669f3e3441e42e4ffef3f9",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"mockexams",
+								"questions",
+								"65669f3e3441e42e4ffef3f9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "GET User Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NjU4NDBhZjJhZjVlNmUzNzJkNTllOCIsImlhdCI6MTcwMTIxNTY0M30.NHK97kzEyPzuwfmbsNkzlSPhPJePsLQJfa5rvkdr_x4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://drivercrashcourse-app.azurewebsites.net/api/statistics",
+							"protocol": "https",
+							"host": [
+								"drivercrashcourse-app",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
