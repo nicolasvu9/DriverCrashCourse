@@ -1,7 +1,7 @@
 import React from "react";
 import "./LandingPage.css";
 import logo from './logo.png';
-import Footer from './Footer'
+import Footer from './LandingFooter'
 import TopNav from './LandingTopNav'
 
 const LandingPage = () => {
