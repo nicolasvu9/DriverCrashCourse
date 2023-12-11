@@ -161,7 +161,7 @@ const PracticeProblemPage = () => {
                 </div>
                 {isCorrect !== null && (
                     <p className="feedback-message">
-                        {isCorrect ? 'Correct!' : <p style = {{ color: "#B80606" }}>'Incorrect. Try again.'</p>}
+                        {isCorrect ? 'Correct!' : <p style = {{ color: "#B80606" }}> Incorrect. Try again.</p>}
                     </p>
                 )}
                 {renderExplanation()}
