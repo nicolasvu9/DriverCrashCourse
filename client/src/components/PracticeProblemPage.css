@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    min-width: 650px;
+    
 }
 
 .page-title {
@@ -16,7 +16,8 @@
 .problem-container {
     width: 100%;
     max-width: 600px;
-    border: 1px solid #ccc;
+    border: 1px solid #edf1e4;
+    background-color: #edf1e4;
     padding: 20px;
     border-radius: 8px;
     box-sizing: border-box;
@@ -31,23 +32,24 @@
     cursor: pointer;
     padding: 10px;
     margin: 10px 0;
-    border: 2px solid #ddd;
+    border: 2px solid #edf1e4;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .choice-item:hover {
-    background-color: #f2f2f2;
+    background-color: #b5e3f0;
 }
 
 .choice-item.selected {
-    background-color: #4caf50;
+    background-color: #6EB0A8;
     color: #fff;
 }
 
 .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
 
