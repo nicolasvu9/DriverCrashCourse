@@ -1,16 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Timer.css";
 
-const Timer = ({ initialTime }) => {
+const Timer = ({ initialTime, onTimeUp }) => {
   const [time, setTime] = useState(initialTime);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    {/*console.log("Timer started!");*/}
+
+    intervalRef.current = setInterval(() => {
       setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
 
-    return () => clearInterval(interval);
-  }, []); // Remove onTimeUpdate from the dependency array
+    return () => {
+      {/*console.log("Timer stopped!");*/}
+      clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (time === 0) {
+      clearInterval(intervalRef.current);
+      onTimeUp(); // Notify the parent component when the time is up
+    }
+  }, [time, onTimeUp]);
 
   const calculatePercentage = () => {
     return ((time / initialTime) * 100).toFixed(2);

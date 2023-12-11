@@ -43,6 +43,13 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
 }, [mockExamId, accessToken]);
 
 
+const handleTimeUp = () => {
+  //console.log("Time is up!");
+  alert("Time is up!");
+  submitResult();
+  setShowCongratulations(true);
+};
+
   const handleNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) =>
       prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex
@@ -86,29 +93,29 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
       }
 
       // Handle success, e.g., navigate to another page or show a success message
-      console.log("Result submitted successfully!");
+      //console.log("Result submitted successfully!");
       // Example: navigate to the congratulations page
       //navigate(`/congratulations/${mockExamId}`);
     } catch (error) {
       console.error("Error submitting result", error);
-      // Handle error, e.g., show an error message to the user
     }
   };
 
   const handleSubmit = () => {
     // Check if all questions are answered
-    const answeredQuestions = Object.keys(selectedChoices).length;
-    const totalQuestions = questions.length;
-
-    if (answeredQuestions < totalQuestions) {
-      // If not all questions are answered, show alert and return
+    const isEveryQuestionAnswered = questions.every(
+      (_, index) => selectedChoices[index] !== undefined && selectedChoices[index] !== null
+    );
+  
+    if (!isEveryQuestionAnswered) {
       alert("Please answer all questions before submitting.");
       return;
     }
+  
     submitResult();
-    // Proceed to the congratulations page
     setShowCongratulations(true);
   };
+  
 
   const handleChoiceChange = (choice) => {
     setSelectedChoices({
@@ -128,7 +135,9 @@ const MockExamQuestions = ({ onBackButtonClick, mockExamId }) => {
         <div>
           <Timer
             initialTime={3600}
-            onTimeUpdate={(updatedTime) => setTimer(updatedTime)}
+            onTimeUpdate={(updatedTime) => setTimer(updatedTime)
+            }
+            onTimeUp={handleTimeUp}
           />
 
 <div className="mock-question-card">
