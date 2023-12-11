@@ -54,21 +54,14 @@ const handleNextQuestion = () => {
   setCurrentQuestionIndex((prevIndex) =>
     prevIndex + 1 < questions.length ? prevIndex + 1 : prevIndex
   );
-  setSelectedChoices((prevChoices) => {
-    const updatedChoices = { ...prevChoices };
-    updatedChoices[currentQuestionIndex + 1] = updatedChoices[currentQuestionIndex + 1] || null;
-    return updatedChoices;
-  });
 };
 
 const handlePreviousQuestion = () => {
   setCurrentQuestionIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
-  setSelectedChoices((prevChoices) => {
-    const updatedChoices = { ...prevChoices };
-    updatedChoices[currentQuestionIndex - 1] = updatedChoices[currentQuestionIndex - 1] || null;
-    return updatedChoices;
-  });
 };
+
+
+
 
 
   const handleBackButtonClick = () => {
@@ -103,11 +96,17 @@ const handlePreviousQuestion = () => {
   };
 
   const handleSubmit = () => {
+    {/*const answeredQuestions = Object.keys(selectedChoices).length;
+    const totalQuestions = questions.length;
+    console.log(answeredQuestions);
+    console.log(totalQuestions);
+  console.log(selectedChoices);*/}
+
     // Check if all questions are answered
     const isEveryQuestionAnswered = questions.every(
       (_, index) => selectedChoices[index] !== undefined && selectedChoices[index] !== null
     );
-  
+      
     if (!isEveryQuestionAnswered) {
       alert("Please answer all questions before submitting.");
       return;
@@ -119,12 +118,13 @@ const handlePreviousQuestion = () => {
   
 
   const handleChoiceChange = (choice) => {
-    setSelectedChoices({
-      ...selectedChoices,
-      [currentQuestionIndex]: choice,
+    setSelectedChoices((prevChoices) => {
+      return {
+        ...prevChoices,
+        [currentQuestionIndex]: choice,
+      };
     });
   };
-
   return (
     <div className="mock-exam-questions">
       {showCongratulations ? (
