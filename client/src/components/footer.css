@@ -1,14 +1,18 @@
 footer {
-  height: 4vh;
-  font-size: 14px;
-  border-top: 1px solid black;
+  height: 5vh;
+  font-size: 10px;
   color: #e4f1c9;
   text-align: center;
-  display: flek;
   background-color: #3f6a6f;
-  overflow: hidden;
+  padding: 8px;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  position:fixed;
-  padding-top: 18px;
-  bottom: 0; /* Ensure the footer stays at the bottom */
+  box-sizing: border-box;
+  border:1px solid #333;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
