@@ -57,7 +57,7 @@ const TopNav = () => {
         <Link to="/suggestion" onClick={() => setIsMenuOpen(false)}>
           Suggestion
         </Link>
-        <Link to="/Video" onClick={() => setIsMenuOpen(false)}>
+        <Link to="/video" onClick={() => setIsMenuOpen(false)}>
           Resources
         </Link>
         {userRole === "admin" && (
