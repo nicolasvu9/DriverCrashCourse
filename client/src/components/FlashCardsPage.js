@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import './FlashCardsPage.css'; 
+import './FlashCardsPage.css';
 import TopNav from './TopNav';
 import Footer from './Footer';
 
@@ -12,16 +12,16 @@ const FlashCardsPage = () => {
   const shuffleArray = (array) => {
     // Use the Fisher-Yates algorithm to shuffle the array in-place
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
-};
+  };
 
   const fetchFlashcards = async () => {
     try {
       const response = await fetch('/api/flashcards', {
         headers: {
-            'x-access-token': Cookies.get('access_token'),
+          'x-access-token': Cookies.get('access_token'),
         },
       });
 
@@ -60,20 +60,24 @@ const FlashCardsPage = () => {
   };
 
   return (
-    <div className="flashcards-container">
-        <TopNav />
-      <div
-        className={`flashcard ${isFlipped ? 'flipped' : ''}`}
-        onClick={handleCardFlip}
-      >
-        <div className="front">{flashcards[currentCardIndex]?.text}</div>
-        <div className="back">{flashcards[currentCardIndex]?.answer}</div>
+    <div>
+      <TopNav />
+      <div className="flashcards-container">
+        <div
+          className={`flashcard ${isFlipped ? 'flipped' : ''}`}
+          onClick={handleCardFlip}
+        >
+          <div className="front">{flashcards[currentCardIndex]?.text}</div>
+          <div className="back">{flashcards[currentCardIndex]?.answer}</div>
+        </div>
+        <br></br>
+        <br></br>
+        <div className="button-container">
+          <button onClick={handlePrevCard}>Previous</button>
+          <button onClick={handleNextCard}>Next</button>
+        </div>
       </div>
-      <div className="button-container">
-        <button onClick={handlePrevCard}>Previous</button>
-        <button onClick={handleNextCard}>Next</button>
-      </div>
-        <Footer />
+      <Footer />
     </div>
   );
 };
