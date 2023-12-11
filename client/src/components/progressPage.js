@@ -42,8 +42,9 @@ const ProgressPage = () => {
   };
 
   return (
-    <div className="Progress-flex-container">
+    <div >
       <TopNav/>
+      <div className="Progress-flex-container">
       {!showDonePage && progressData && (
         <>
           <div className="div1">
@@ -55,21 +56,32 @@ const ProgressPage = () => {
 
           <div className="div2">
             {Array.isArray(progressData.mockExamsTopResults.mockExamsTopResults) &&
-              progressData.mockExamsTopResults.mockExamsTopResults
-                .slice()
-                .sort((a, b) => b.top_result - a.top_result) // Sort by top_result in descending order
-                .slice(0, 1) // Take only the first (highest) entry
-                .map((mockExamResult) => (
-                  <div key={mockExamResult._id}>
-                    <div className="bubble2">
-                      Mock Exam: {mockExamResult.mock_exam_id.name}<br></br> Top Result: {mockExamResult.top_result}%
+              progressData.mockExamsTopResults.mockExamsTopResults.length > 0 ? (
+                progressData.mockExamsTopResults.mockExamsTopResults
+                  .slice()
+                  .sort((a, b) => b.top_result - a.top_result)
+                  .slice(0, 1)
+                  .map((mockExamResult) => (
+                    <div key={mockExamResult._id}>
+                      <div className="bubble2">
+                        Mock Exam: {mockExamResult.mock_exam_id.name}<br></br> Top Result: {mockExamResult.top_result}%
+                      </div>
+                      <ProgressBar stopValue={mockExamResult.top_result} />
                     </div>
-                    <ProgressBar stopValue={mockExamResult.top_result} />
+                  ))
+              ) : (
+                // Default value when no mock exam data is available
+                <div>
+                  <div className="bubble2">
+                    Mock Exam: No data available<br></br> Top Result: 0%
                   </div>
-                ))}
+                  <ProgressBar stopValue={0} />
+                </div>
+              )}
           </div>
         </>
       )}
+      </div>
       <Footer />
     </div>
   );
